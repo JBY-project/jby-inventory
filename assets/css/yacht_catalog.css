@@ -1,0 +1,285 @@
+.filter-dropdown {
+    min-width: 384px;
+}
+
+/* noUiSlider custom styling */
+.noUi-target {
+    background: #e2e8f0;
+    border: none;
+    box-shadow: none;
+    height: 4px;
+}
+
+.noUi-connect {
+    background: #3b82f6;
+}
+
+.noUi-handle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+    top: -6px;
+    right: -8px;
+}
+
+.noUi-handle:hover {
+    background: #2563eb;
+    transform: scale(1.1);
+}
+
+.noUi-handle:before,
+.noUi-handle:after {
+    display: none;
+}
+
+.noUi-touch-area {
+    cursor: pointer;
+}
+
+.noUi-horizontal .noUi-handle {
+    width: 20px;
+    height: 20px;
+    right: -17px;
+    top: -8px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    ring: 2px solid #3b82f6;
+}
+
+/* Make/Model filter uses .make-model-filter-input in custom_yacht_style.css */
+
+/* Location input styling */
+#locationInput {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#locationInput::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0;
+    width: 2.5rem;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+}
+
+.location-click-area {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#locationInput + .fa-chevron-down {
+    pointer-events: none;
+}
+
+.location-wrapper {
+    position: relative;
+}
+
+/* Filter Pill Buttons */
+.filter-pill-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filter-pill-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.filter-pill-btn.active i {
+    color: #3b82f6;
+}
+
+.filter-pill-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.filter-pill-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Feature buttons - smaller padding for more compact layout */
+.feature-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.feature-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.feature-btn.active i {
+    color: #3b82f6;
+}
+
+.feature-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.feature-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Activity buttons */
+.activity-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.activity-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.activity-btn.active i {
+    color: #3b82f6;
+}
+
+.activity-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.activity-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Hull Material buttons */
+.hull-material-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.hull-material-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.hull-material-btn.active i {
+    color: #3b82f6;
+}
+
+.hull-material-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.hull-material-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Fuel buttons */
+.fuel-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.fuel-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.fuel-btn.active i {
+    color: #3b82f6;
+}
+
+.fuel-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.fuel-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Engine Type buttons */
+.engine-type-btn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.engine-type-btn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.engine-type-btn.active i {
+    color: #3b82f6;
+}
+
+.engine-type-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.engine-type-btn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* Warranty button */
+#warrantyBtn {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#warrantyBtn.active {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#warrantyBtn.active i {
+    color: #3b82f6;
+}
+
+#warrantyBtn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+#warrantyBtn.active:hover {
+    background-color: #dbeafe;
+    border-color: #2563eb;
+}

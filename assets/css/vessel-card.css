@@ -1,0 +1,117 @@
+/* ==========================================================================
+   The listing card, lifted from the home page — .vessel-card and everything
+   under it, its hover and its View button, with the phone rules that come with
+   them. The values are the home page's, unchanged.
+
+   Every selector carries #jb_body, which is this page's own body id: the
+   deployed catalogue's stylesheet writes rules like `#jb_body .price`, and an
+   id outranks two classes no matter which file loads last. Without it the card
+   kept the catalogue's 24px semibold price and its own spacing.
+
+   The catalogue's card (.home-vessels-v2-card) is no longer used; its rules
+   stay in yacht_catalog.css, unread.
+   ========================================================================== */
+
+#jb_body .vessel-card{min-width:0;height:390px;position:relative;
+  border-radius:2px;overflow:hidden;cursor:pointer;background:#0a1620;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+#jb_body .vessel-card .v-img{position:absolute;inset:0;background-size:cover;background-position:center;
+  transition:transform 900ms cubic-bezier(0.22, 1, 0.36, 1)}
+#jb_body .vessel-card:hover .v-img{transform:scale(1.07)}
+#jb_body .vessel-card .v-img-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(54,84,102,0.42) 0%,rgba(54,84,102,0) 38%)}
+#jb_body .vessel-card .brand{position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  width:225px;height:73px;z-index:3;display:flex;align-items:center;justify-content:center;
+  pointer-events:none}
+#jb_body .vessel-card .brand img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,0.4))}
+#jb_body .vessel-card .info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:36px 20px 20px;
+  /* --navy-d #365466, a step under --navy, per the client's note that the
+     listing gradients should be a darker JBY blue than #41647b */
+  background:linear-gradient(179.96deg,rgba(54,84,102,0) 22%,rgba(54,84,102,0.82) 62%,rgba(54,84,102,0.94) 100%);
+  display:flex;flex-direction:column;gap:12px}
+#jb_body .vessel-card .chip-loc{background:linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0.20));
+  -webkit-backdrop-filter:blur(84px);backdrop-filter:blur(84px);
+  color:#fff;padding:5px 12px 4px;font-family:'Mesmerize',sans-serif;
+  font-weight:300;font-size:10px;line-height:15px;letter-spacing:0.07em;text-transform:uppercase;
+  border-radius:2px;align-self:flex-start;display:inline-block}
+#jb_body .vessel-card .name{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:#fff;
+  margin:0;text-transform:none;max-width:82%;min-height:56px;text-wrap:balance;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+#jb_body .vessel-card .price{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:#fff;
+  margin:-8px 0 0}
+#jb_body .v-cta{position:absolute;bottom:24px;right:24px;z-index:4;
+  height:36px;width:36px;border-radius:0;
+  color:#fff;
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:13px;
+  letter-spacing:0;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;
+  padding:0;border:0;cursor:pointer;overflow:hidden;white-space:nowrap;
+  transition:width 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+             padding 1.5s cubic-bezier(0.16, 1, 0.3, 1)}
+#jb_body .v-cta-text{opacity:0;max-width:0;overflow:hidden;
+  transition:opacity .6s ease 0.4s, max-width 1.4s cubic-bezier(0.16, 1, 0.3, 1)}
+#jb_body .v-cta-icon{display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+  opacity:1;max-width:18px;
+  transition:opacity .5s ease, max-width .9s cubic-bezier(0.16, 1, 0.3, 1)}
+#jb_body .vessel-card:hover .v-cta{width:92px;padding:0 16px}
+#jb_body .vessel-card:hover .v-cta-text{opacity:1;max-width:80px}
+#jb_body .vessel-card:hover .v-cta-icon{opacity:0;max-width:0}
+#jb_body .vessel-card.reveal,#jb_body .vessel-card.reveal.in{opacity:1;transform:none;transition:none;will-change:auto;transition-delay:0s}
+
+@media (max-width:980px){
+#jb_body .vessels-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    grid-template-columns:none}#jb_body .vessels-strip::-webkit-scrollbar{display:none}#jb_body .vessels-strip:has(.vessel-card:nth-child(1):hover),#jb_body .vessels-strip:has(.vessel-card:nth-child(2):hover),#jb_body .vessels-strip:has(.vessel-card:nth-child(3):hover),#jb_body .vessels-strip:has(.vessel-card:nth-child(4):hover){grid-template-columns:none}#jb_body .vessel-card{flex:0 0 280px;height:390px;scroll-snap-align:start}#jb_body .v-cta-text{display:none}
+
+}
+@media (prefers-reduced-motion: reduce){
+#jb_body .reveal,#jb_body .split-words .w,#jb_body .hero h1,#jb_body .hero .btn-hero{transition:none;opacity:1;transform:none}#jb_body .parallax > .pfx{transform:none !important}#jb_body .nav{transition:background .25s, color .25s}#jb_body .v-thumb .bg,#jb_body .v-thumb .veil,#jb_body .v-thumb .v-body,#jb_body .v-thumb .v-body p,#jb_body .event-card,#jb_body .event-card .img,#jb_body .event-card .event-video,#jb_body .vessels-strip,#jb_body .vessel-card,#jb_body .v-cta,#jb_body .builders .bg,#jb_body .builders .bg-video,#jb_body .brand-fade,#jb_body .featured-event,#jb_body .owners-hero,#jb_body .foot-social a{transition:none !important;animation:none !important}#jb_body .b-tab{transition:color .25s !important;opacity:1 !important;transform:none !important}
+
+}
+@media (hover:none),(pointer:coarse){
+#jb_body .vessel-card{height:430px}#jb_body .vessel-card .info{padding-bottom:72px}#jb_body /* Full width means the line fills it. text-wrap:balance evens the two lines
+     out,#jb_body which is what the desktop card wants beside the corner button,#jb_body but
+     here it was holding both lines to about 140px of the 240 available and
+     leaving a hand's width of empty panel on the right. */
+  .vessel-card .name{max-width:100%;text-wrap:wrap}#jb_body /* 20px taller card,#jb_body and the extension pulled back off the boat.
+     The card growing moves the panel's top edge down the photograph — the
+     text and the button sit the same distance from the bottom,#jb_body so the whole
+     block drops with it and the chip lands lower,#jb_body on water rather than on
+     sky. That buys back most of what the panel's growth had taken,#jb_body and the
+     rest is a short ramp that now starts at 34% instead of 26% and holds flat
+     at 0.5 rather than climbing to 0.74: enough behind the chip,#jb_body and 38px
+     more of clear photograph above it. */
+  .vessel-card .v-img-veil{background:
+    linear-gradient(180deg,rgba(54,84,102,0.42) 0%,rgba(54,84,102,0) 38%),
+    linear-gradient(180deg,rgba(54,84,102,0) 34%,rgba(54,84,102,0.5) 48%,rgba(54,84,102,0.5) 100%)}#jb_body .vessel-card .v-cta{left:20px;right:20px;bottom:20px;width:auto;height:36px;padding:0;
+    justify-content:center;transition:none}#jb_body /* The chevrons sit on the card's midline,#jb_body from the wrapper's own 50% which
+     the card fills. The city chip starts 16px below the panel's top edge,#jb_body so
+     the left chevron covers its top 13px and its first 20px of width once the
+     strip has been scrolled far enough for that chevron to appear; the right
+     one is clear of it.
+
+     Horizontally each keeps the base rule's 20px from its own side of the
+     screen,#jb_body so the two are mirrored — the right one had been pulled in to the
+     card's right edge,#jb_body which left it 67px from the screen against the left
+     one's 20. The card is 280 of the screen's width and the pair straddles it
+     from outside rather than sitting on it. */
+  .vessel-card .v-cta .v-cta-text{display:inline;opacity:1;max-width:none}#jb_body .vessel-card .v-cta .v-cta-icon{display:none}#jb_body /* Nothing on the card answers :hover here. A tap leaves :hover latched on a
+     touch screen,#jb_body so every rule that listens to it is a state the finger can
+     switch on and not switch off — which is the bug the button was hidden for
+     in the first place. These repeat the hover selectors verbatim so they win
+     on equal specificity from further down the sheet,#jb_body rather than relying on
+     the unhovered rules,#jb_body which .vessel-card:hover .v-cta would outrank. */
+  .vessel-card:hover .v-img{transform:none}#jb_body .vessel-card:hover .v-cta{width:auto;padding:0}#jb_body .vessel-card:hover .v-cta-text{opacity:1;max-width:none}#jb_body .vessel-card .v-cta:hover{background:var(--jby-veil);color:#fff}#jb_body .cards-scroll-arr:hover{background:rgba(0,0,0,0.5);transform:translateY(-50%)}
+
+}
+
+@media (hover:none),(pointer:coarse){
+  /* The name reserved two lines (min-height:56px) so every card in a desktop
+     row put its price on the same line. On the phone the cards are one per
+     row and nothing needs to line up across them, so a one-line name was
+     leaving a whole empty line — 12px of flex gap plus 28px of unused box —
+     between it and the price. The box drops to its natural height and the
+     price takes 8px of its own on top of the 12px gap: 20px, flat. */
+  #jb_body .vessel-card .name{min-height:0}
+  #jb_body .vessel-card .price{margin:8px 0 0}
+}

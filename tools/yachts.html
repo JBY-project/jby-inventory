@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yachts For Sale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preload" href="/assets/fonts/myriad_pro/MYRIADPRO-REGULAR.OTF" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/assets/fonts/myriad_pro/MyriadPro-Light.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/assets/fonts/mesmerize/mesmerize-ex-lt-.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/assets/fonts/mesmerize/mesmerize-rg.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/contact-expert-modal.css">
+<link rel="stylesheet" href="/assets/css/jby-intro.css">
+<style>
+  html.jby-intro-lock,html.jby-intro-lock body{overflow:hidden}
+  html.jby-intro-lock .header-nav-root .logo,
+  html.jby-intro-lock .header-v2__logo{opacity:0 !important}
+  html.jby-intro-lock:not(.jby-intro-ready)::before{
+    content:"";position:fixed;inset:0;z-index:10000;background:#41647b;pointer-events:none
+  }
+</style>
+<script>
+(function () {
+  try {
+    if (new URLSearchParams(location.search).has('nointro')) return;
+    document.documentElement.classList.add('jby-intro-lock');
+    setTimeout(function () {
+      document.documentElement.classList.remove('jby-intro-lock', 'jby-intro-ready');
+    }, 20000);
+  } catch (e) {
+    document.documentElement.classList.add('jby-intro-lock');
+  }
+})();
+</script>
+<style>
+  #jb_body {
+    font-family: "Myriad-Pro-Regular", system-ui, -apple-system, sans-serif;
+  }
+  #jb_body .main-menu a,
+  #jb_body header .btn-contact-us {
+    font-family: "Mesmerize-ex-lt", "Arial Narrow", system-ui, sans-serif;
+  }
+  #jb_body #mobileMenu a,
+  #jb_body #mobileMenu .btn-contact-us,
+  #jb_body #mobileMenu a.mt-4 {
+    font-family: "Mesmerize-rg", system-ui, sans-serif;
+  }
+</style>
+    <link rel="stylesheet" href="/assets/css/yacht_catalog.css">
+    <link rel="stylesheet" href="/assets/css/yacht_style.css">
+    <link rel="stylesheet" href="/assets/css/custom_yacht_style.css">
+</head>
+<body
+    id="jb_body"
+    class="bg-white yacht-catalog-v2 layout-v2"
+    data-layout-variant="v2"
+    >
+    <header class="header-v2 header-nav-root header-v2--flow" data-header-v2>
+
+    <div class="header-v2__bar">
+        <div class="header-v2__side header-v2__side--left">
+            <button
+                type="button"
+                class="header-v2__menu-toggle"
+                id="headerV2MenuToggle"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="headerV2Mega"
+            >
+                <span class="header-v2__menu-icon header-v2__menu-icon--open" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="header-v2__menu-icon header-v2__menu-icon--close" aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="header-v2__center">
+            <a href="https://jb.apdstack.com" class="header-v2__logo logo" aria-label="Jeff Brown Yachts home">
+                <img
+                    src="/assets/img/jby-home-v2/jby_logo.svg"
+                    alt="Jeff Brown Yachts"
+                    class="header-v2__logo-image"
+                    data-intro-logo
+                >
+            </a>
+        </div>
+
+        <div class="header-v2__side header-v2__side--right">
+            <div class="header-v2__search-wrap">
+                <button
+                    type="button"
+                    id="searchToggle"
+                    class="header-v2__search"
+                    aria-label="Search"
+                    aria-haspopup="dialog"
+                    aria-controls="jbs"
+                >
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <a
+                href="#"
+                class="btn-contact-us header-home__contact mesmerize-font inline-flex h-[40px] items-center justify-center transition whitespace-nowrap"
+                data-open-expert
+                role="button"
+            >
+                Contact an expert
+            </a>
+        </div>
+    </div>
+
+</header>
+
+<div
+    class="mega"
+    id="headerV2Mega"
+    data-theme="dark"
+    aria-hidden="true"
+>
+    <div class="mega-veil" data-mega-close></div>
+
+    <aside class="mega-panel" role="dialog" aria-modal="true" aria-label="Main menu">
+        <div class="mega-top">
+            <a
+                class="mega-logo"
+                href="https://jb.apdstack.com"
+                data-mega-close
+                aria-label="Jeff Brown Yachts — Home"
+            >
+                <img src="/assets/img/jby-home-v2/jby_logo.svg" alt="Jeff Brown Yachts">
+            </a>
+            <button type="button" class="mega-close" data-mega-close aria-label="Close menu">
+                <svg class="mega-ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mega-body" id="headerV2MegaBody">
+            <nav class="mega-rail" aria-label="Menu categories">
+                                    
+                                            <button
+                            type="button"
+                            class="mega-cat active"
+                            data-cat="portfolio"
+                        >
+                            Portfolio
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                        
+                                            <button
+                            type="button"
+                            class="mega-cat"
+                            data-cat="brands"
+                        >
+                            Brands
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                        
+                                            <button
+                            type="button"
+                            class="mega-cat"
+                            data-cat="services"
+                        >
+                            Services
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                        
+                                            <button
+                            type="button"
+                            class="mega-cat"
+                            data-cat="events"
+                        >
+                            EVENTS
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                        
+                                            <button
+                            type="button"
+                            class="mega-cat"
+                            data-cat="about-jby"
+                        >
+                            About JBY
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                        
+                                            <button
+                            type="button"
+                            class="mega-cat"
+                            data-cat="jby-insights"
+                        >
+                            JBY Insights
+                            <svg class="mega-ti chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                                                </nav>
+
+            <div class="mega-detail" id="headerV2MegaDetail">
+                <div class="mega-feature" id="headerV2MegaFeature" hidden aria-hidden="true"></div>
+                <div class="mega-scrim"></div>
+
+                <button type="button" class="mega-back" data-mega-back>
+                    <svg class="mega-ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 6l-6 6 6 6"/>
+                    </svg>
+                    Menu
+                </button>
+
+                                    
+                                            <div class="mega-pane on" data-pane="portfolio">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>BY CATEGORY</h4>
+                                                                                                                            <a href="/yachts">All Boats for Sale</a>
+                                                                                    <a href="#2">New</a>
+                                                                                    <a href="#2">Pre-Owned</a>
+                                                                                    <a href="#">Recently Added</a>
+                                                                                    <a href="#">Price Reduced</a>
+                                                                            </div>
+                                                                                                                                <div class="mega-col">
+                                                                                    <h4>BY LOCATION</h4>
+                                                                                                                            <a href="/locations/san-diego">San Diego, CA</a>
+                                                                                    <a href="/locations/newport-harbor">Newport Beach, CA</a>
+                                                                                    <a href="/locations/sausalito">Sausalito, CA</a>
+                                                                                    <a href="/locations/wrightsville-beach">Wrightsville Beach, NC</a>
+                                                                                    <a href="/locations/charleston">Charleston, SC</a>
+                                                                                    <a href="/locations/kona">Kailua-Kona, HI</a>
+                                                                                    <a href="/locations/seattle">Seattle, WA</a>
+                                                                                    <a href="/locations/marina-del-rey">Marina del Rey, CA</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                        
+                                            <div class="mega-pane" data-pane="brands">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>BUILDERS WE REPRESENT</h4>
+                                                                                                                            <a href="/brands/axopar">Axopar</a>
+                                                                                    <a href="/brands/brabus">Brabus</a>
+                                                                                    <a href="/brands/pershing">Pershing</a>
+                                                                                    <a href="/brands/riva">Riva</a>
+                                                                                    <a href="/brands/sirena-yachts">Sirena Yachts</a>
+                                                                                    <a href="/brands/wally">Wally</a>
+                                                                                    <a href="/brands/everglades">Everglades</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                        
+                                            <div class="mega-pane" data-pane="services">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>OWNERSHIP</h4>
+                                                                                                                            <a href="/services/yacht-management">Yacht Management</a>
+                                                                                    <a href="/services/service-maintenance">Service &amp; Maintenance</a>
+                                                                            </div>
+                                                                                                                                <div class="mega-col">
+                                                                                    <h4>OPERATIONS</h4>
+                                                                                                                            <a href="https://maritimeusa.com/">Co-Ownership</a>
+                                                                                    <a href="https://yachtway.com/boat-loans/">Financing</a>
+                                                                                    <a href="https://yachtway.com/boat-insurance/">Insurance</a>
+                                                                            </div>
+                                                                                                                                <div class="mega-col">
+                                                                                    <h4>SELLER PATHS</h4>
+                                                                                                                            <a href="/services/sell-your-yacht">Sell Your Yacht</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                        
+                                            <div class="mega-pane" data-pane="events">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>EVENT DISCOVERY</h4>
+                                                                                                                            <a href="/experiences">Upcoming Events</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                        
+                                            <div class="mega-pane" data-pane="about-jby">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>COMPANY</h4>
+                                                                                                                            <a href="/about">About JBY</a>
+                                                                                    <a href="/locations">Locations</a>
+                                                                                    <a href="/contact">Contact Us</a>
+                                                                            </div>
+                                                                                                                                <div class="mega-col">
+                                                                                    <h4>PEOPLE</h4>
+                                                                                                                            <a href="/our-team">Our team</a>
+                                                                                    <a href="/faq">FAQ</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                        
+                                            <div class="mega-pane" data-pane="jby-insights">
+                            
+                                                                                                <div class="mega-col">
+                                                                                    <h4>JBY Insights</h4>
+                                                                                                                            <a href="/knowledge-center">JBY Insights</a>
+                                                                            </div>
+                                                            
+                                                    </div>
+                                                </div>
+        </div>
+
+        <div class="mega-foot mega-foot-split">
+            <div class="mf-social">
+                                    <a
+                        href="#"
+                        aria-label="Instagram"
+                                            >
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                                    <a
+                        href="#"
+                        aria-label="Facebook"
+                                            >
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                                    <a
+                        href="#"
+                        aria-label="Youtube"
+                                            >
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                    </a>
+                                    <a
+                        href="#"
+                        aria-label="Linkedin"
+                                            >
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                            </div>
+            <div class="mf-l">
+                                    <a class="mf-link" href="tel:+16192229899">+1 619-222-9899</a>
+                                                    <a class="mf-link" href="mailto:jeff@jeffbrownyachts.com">jeff@jeffbrownyachts.com</a>
+                            </div>
+        </div>
+    </aside>
+</div>
+
+    <main class="yacht-catalog yacht-catalog-v2__main">
+        <div class="container mx-auto px-4 sm:px-6 py-8 lg:py-12">
+            <h1 class="yacht-catalog-v2__title">Yachts For Sale</h1>
+
+            <div class="filter-bar yacht-catalog-v2__filters">
+                <div class="filter-bar-inner">
+    
+    <div class="filter-group relative">
+        <button
+            type="button"
+            class="filter-button filter-button--make-model"
+            id="makeModelTrigger"
+            onclick="toggleFilterDropdown('makeModelFilter')"
+            aria-expanded="false"
+            aria-controls="makeModelFilter"
+        >
+            <span class="filter-button-label">Make or Model</span>
+            <span class="filter-button-divider" id="makeModelDivider" hidden></span>
+            <span id="makeModelActive" class="filter-button-values"></span>
+            <i class="fas fa-chevron-down filter-chevron" aria-hidden="true"></i>
+        </button>
+        <div id="makeModelFilter" class="filter-dropdown make-model-filter-panel hidden">
+            <input
+                type="text"
+                id="makeModelInput"
+                name="search"
+                autocomplete="off"
+                class="make-model-filter-input"
+                placeholder="Start typing to see the options"
+                value=""
+            >
+            <div id="makeModelStatus" class="make-model-filter-status hidden" aria-live="polite"></div>
+            <div id="makeModelOptions" class="make-model-filter-options hidden">
+                <div id="makeModelOptionsList" class="make-model-filter-options-list"></div>
+            </div>
+            <div id="makeModelFooter" class="condition-filter-footer make-model-filter-footer hidden">
+                <button type="button" class="condition-filter-btn-clear" onclick="clearMakeModelFilterPanel()">Clear</button>
+                <button type="button" class="condition-filter-btn-apply" onclick="applyMakeModelFilter()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="filter-group relative">
+        <button type="button" class="filter-button" onclick="toggleFilterDropdown('conditionFilter')" aria-expanded="false" aria-controls="conditionFilter">
+            <span class="filter-button-label">Condition</span>
+            <span class="filter-button-divider" id="conditionDivider" hidden></span>
+            <span id="conditionActive" class="filter-button-values"></span>
+            <i class="fas fa-chevron-down filter-chevron" aria-hidden="true"></i>
+        </button>
+        <div id="conditionFilter" class="filter-dropdown condition-filter-panel hidden">
+            <div class="condition-filter-header">
+                <span class="condition-filter-title">Vessel condition</span>
+                <button type="button" class="condition-filter-close" onclick="closeConditionFilter()" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="condition-filter-options">
+                <label class="condition-filter-option">
+                    <input type="radio" name="conditionRadio" value="" checked>
+                    <span class="condition-filter-radio"></span>
+                    <span class="condition-filter-label">All vessels</span>
+                </label>
+                <label class="condition-filter-option">
+                    <input type="radio" name="conditionRadio" value="new" >
+                    <span class="condition-filter-radio"></span>
+                    <span class="condition-filter-label">New</span>
+                </label>
+                <label class="condition-filter-option">
+                    <input type="radio" name="conditionRadio" value="preOwned" >
+                    <span class="condition-filter-radio"></span>
+                    <span class="condition-filter-label">Pre-owned</span>
+                </label>
+            </div>
+            <div class="condition-filter-footer">
+                <button type="button" class="condition-filter-btn-clear" onclick="clearConditionFilter()">Clear</button>
+                <button type="button" class="condition-filter-btn-apply" onclick="applyConditionFilter()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="filter-group relative">
+        <button type="button" class="filter-button" onclick="toggleFilterDropdown('priceFilter')" aria-expanded="false" aria-controls="priceFilter">
+            <span class="filter-button-label">Price</span>
+            <span class="filter-button-divider" id="priceDivider" hidden></span>
+            <span id="priceActive" class="filter-button-values"></span>
+            <i class="fas fa-chevron-down filter-chevron" aria-hidden="true"></i>
+        </button>
+        <div id="priceFilter" class="filter-dropdown price-filter-panel hidden">
+            <div class="condition-filter-header">
+                <span class="condition-filter-title">Price range</span>
+                <button type="button" class="condition-filter-close" onclick="closePriceFilter()" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="price-filter-slider-wrap">
+                <div id="priceSlider" class="price-slider"></div>
+                <div class="price-filter-scale">
+                    <span>1K</span>
+                    <span>6M</span>
+                    <span>12.1M</span>
+                    <span>18.3M+</span>
+                </div>
+            </div>
+            <div class="price-filter-inputs">
+                <div class="price-filter-field">
+                    <input type="text" id="minPriceInput" inputmode="numeric" placeholder="Min" autocomplete="off">
+                </div>
+                <div class="price-filter-field">
+                    <input type="text" id="maxPriceInput" inputmode="numeric" placeholder="Max" autocomplete="off">
+                </div>
+            </div>
+            <div class="condition-filter-footer">
+                <button type="button" class="condition-filter-btn-clear" onclick="clearPriceFilter()">Clear</button>
+                <button type="button" class="condition-filter-btn-apply" onclick="applyPriceFilter()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="filter-group relative">
+        <button type="button" class="filter-button" onclick="toggleFilterDropdown('lengthFilter')" aria-expanded="false" aria-controls="lengthFilter">
+            <span class="filter-button-label">Length</span>
+            <span class="filter-button-divider" id="lengthDivider" hidden></span>
+            <span id="lengthActive" class="filter-button-values"></span>
+            <i class="fas fa-chevron-down filter-chevron" aria-hidden="true"></i>
+        </button>
+        <div id="lengthFilter" class="filter-dropdown length-filter-panel hidden">
+            <div class="condition-filter-header">
+                <span class="condition-filter-title">Vessel length</span>
+                <button type="button" class="condition-filter-close" onclick="closeLengthFilter()" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="length-filter-slider-wrap">
+                <div id="lengthSlider" class="length-slider"></div>
+                <div class="length-filter-scale">
+                    <span>10FT</span>
+                    <span>150FT</span>
+                    <span>300FT</span>
+                    <span>600FT+</span>
+                </div>
+            </div>
+            <div class="length-filter-inputs">
+                <div class="length-filter-field">
+                    <input type="text" id="minLengthInput" inputmode="numeric" placeholder="Min" autocomplete="off">
+                </div>
+                <div class="length-filter-field">
+                    <input type="text" id="maxLengthInput" inputmode="numeric" placeholder="Max" autocomplete="off">
+                </div>
+            </div>
+            <div class="condition-filter-footer">
+                <button type="button" class="condition-filter-btn-clear" onclick="clearLengthFilter()">Clear</button>
+                <button type="button" class="condition-filter-btn-apply" onclick="applyLengthFilter()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="filter-group relative">
+        <button type="button" class="filter-button" onclick="toggleFilterDropdown('locationFilter')" aria-expanded="false" aria-controls="locationFilter">
+            <span class="filter-button-label">Location</span>
+            <span class="filter-button-divider" id="locationDivider" hidden></span>
+            <span id="locationActive" class="filter-button-values"></span>
+            <i class="fas fa-chevron-down filter-chevron" aria-hidden="true"></i>
+        </button>
+        <div id="locationFilter" class="filter-dropdown location-filter-panel hidden">
+            <div class="condition-filter-header">
+                <span class="condition-filter-title">Location</span>
+                <button type="button" class="condition-filter-close" onclick="closeLocationFilter()" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="locationFilterOptions" class="location-filter-options">
+                <div class="location-filter-status">Loading locations...</div>
+            </div>
+            <div class="condition-filter-footer">
+                <button type="button" class="condition-filter-btn-clear" onclick="clearLocationFilter()">Clear</button>
+                <button type="button" class="condition-filter-btn-apply" onclick="applyLocationFilter()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" id="clearAllFiltersBtn" class="filter-clear-all" hidden onclick="clearAllFilters()">Clear all filters</button>
+</div>
+            </div>
+
+            <div class="catalog-results-bar">
+    <p class="catalog-results-count">
+        All vessels: <strong>65</strong>
+    </p>
+
+    <div class="catalog-sort" id="sortContainer">
+    <button type="button" class="catalog-sort-button" onclick="toggleSortDropdown()" aria-expanded="false" aria-controls="sortDropdown">
+        <span class="catalog-sort-text">
+            Sort by: <strong>Recently Listed</strong>
+        </span>
+        <i class="fas fa-chevron-down catalog-sort-chevron" id="sortChevron" aria-hidden="true"></i>
+    </button>
+
+    <div class="catalog-sort-dropdown" id="sortDropdown">
+        <div class="catalog-sort-dropdown-header">Sort by:</div>
+
+        <div class="catalog-sort-group">
+            <a href="https://jb.apdstack.com/yachts?orderBy=Price&amp;order=DESC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Price: High to Low</span>
+                            </a>
+            <a href="https://jb.apdstack.com/yachts?orderBy=Price&amp;order=ASC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Price: Low to High</span>
+                            </a>
+        </div>
+
+        <div class="catalog-sort-group">
+            <a href="https://jb.apdstack.com/yachts?orderBy=Year&amp;order=DESC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Year: Newest to Oldest</span>
+                            </a>
+            <a href="https://jb.apdstack.com/yachts?orderBy=Year&amp;order=ASC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Year: Oldest to Newest</span>
+                            </a>
+        </div>
+
+        <div class="catalog-sort-group">
+            <a href="https://jb.apdstack.com/yachts?orderBy=Date%20Added&amp;order=ASC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Date added: Ascending</span>
+                            </a>
+            <a href="https://jb.apdstack.com/yachts?orderBy=Date%20Added&amp;order=DESC&amp;page=1"
+               class="catalog-sort-option is-active">
+                <span>Date added: Descending</span>
+                                    <i class="fas fa-check" aria-hidden="true"></i>
+                            </a>
+        </div>
+
+        <div class="catalog-sort-group">
+            <a href="https://jb.apdstack.com/yachts?orderBy=Length&amp;order=DESC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Length: Longest to Shortest</span>
+                            </a>
+            <a href="https://jb.apdstack.com/yachts?orderBy=Length&amp;order=ASC&amp;page=1"
+               class="catalog-sort-option ">
+                <span>Length: Shortest to Longest</span>
+                            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+            
+                            <div class="yacht-catalog-v2__grid">
+                                            <a href="/yachts/5ed0566c-2d89-449a-a5a9-5dd86c4bf730" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/5ed0566c-2d89-449a-a5a9-5dd86c4bf730/gallery/2026-pershing-gtx116-for-sale-fort-lauderdale-florida-uncategorized-001-tlubbe.jpg"
+                alt="2026 Pershing GTX116"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <video muted loop playsinline preload="none">
+                            <source src="https://files.yachtway.com/listings/5ed0566c-2d89-449a-a5a9-5dd86c4bf730/videos/9b5e0951-820b-4a85-a33a-74cd6bd41a5e_listingCard.mp4" type="video/mp4">
+                        </video>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Pershing_logo_white.webp"
+                    alt="Pershing logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Fort Lauderdale, Florida</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2026 Pershing GTX116</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/ff9b17a6-e6d1-47fc-b497-314141396a9c" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/ff9b17a6-e6d1-47fc-b497-314141396a9c/gallery/2026-pershing-gtx70-for-sale-fort-lauderdale-florida-uncategorized-001-tlu5h4.jpg"
+                alt="2026 Pershing GTX70"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <video muted loop playsinline preload="none">
+                            <source src="https://files.yachtway.com/listings/ff9b17a6-e6d1-47fc-b497-314141396a9c/videos/c81ced08-ae4f-4438-ac71-b75b9e917693_listingCard.mp4" type="video/mp4">
+                        </video>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Pershing_logo_white.webp"
+                    alt="Pershing logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Fort Lauderdale, Florida</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2026 Pershing GTX70</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/bfaaa6ed-64ae-4757-9c27-c5cfc002d1e4" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/bfaaa6ed-64ae-4757-9c27-c5cfc002d1e4/gallery/2026-wally-wallytender48x-for-sale-huntington-new-york-uncategorized-001-tlsaw2.jpg"
+                alt="2026 Wally Wallytender48X"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <video muted loop playsinline preload="none">
+                            <source src="https://files.yachtway.com/listings/bfaaa6ed-64ae-4757-9c27-c5cfc002d1e4/videos/2404a895-e7c3-4823-81a9-dea5bc82663c_listingCard.mp4" type="video/mp4">
+                        </video>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Wally_logo_white.webp"
+                    alt="Wally logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Huntington, New York</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2026 Wally Wallytender48X</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/d21d93c5-5544-433c-9ed6-46a7beb86917" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/d21d93c5-5544-433c-9ed6-46a7beb86917/gallery/2026-wally-wallytender43-for-sale-fort-lauderdale-florida-uncategorized-001-tlqmz7.jpg"
+                alt="2026 Wally Wallytender43"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <video muted loop playsinline preload="none">
+                            <source src="https://files.yachtway.com/listings/d21d93c5-5544-433c-9ed6-46a7beb86917/videos/06f3b58b-7373-4163-bd76-7df270045263_listingCard.mp4" type="video/mp4">
+                        </video>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Wally_logo_white.webp"
+                    alt="Wally logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Fort Lauderdale, Florida</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2026 Wally Wallytender43</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/d8e1215c-840d-41e6-84f3-c78f53e66cc5" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/d8e1215c-840d-41e6-84f3-c78f53e66cc5/gallery/2024-riva-dolceriva-for-sale-fort-lauderdale-florida-uncategorized-001-tlqdg4.png"
+                alt="2024 Riva Dolceriva"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/tccYbeSdsHg?autoplay=1&mute=1&controls=0&loop=1&playlist=tccYbeSdsHg&modestbranding=1&showinfo=0&rel=0"
+                            title="2024 Riva Dolceriva"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Riva_logo_white.webp"
+                    alt="Riva logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Fort Lauderdale, Florida</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2024 Riva Dolceriva</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/a639b7a3-7a7f-4020-b1ea-cf4319e0de54" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/a639b7a3-7a7f-4020-b1ea-cf4319e0de54/gallery/2027-axopar-29-xc-cross-cabin-for-sale-newport-beach-california-uncategorized-001-tlkudi.jpg"
+                alt="2027 Axopar 29 XC Cross Cabin"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/vb7v7_R4nHA?autoplay=1&mute=1&controls=0&loop=1&playlist=vb7v7_R4nHA&modestbranding=1&showinfo=0&rel=0"
+                            title="2027 Axopar 29 XC Cross Cabin"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Axopar_logo_white.webp"
+                    alt="Axopar logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Newport Beach, California</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Axopar 29 XC Cross Cabin</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    $340,780
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/79136f02-3b04-4f10-b830-7df31f06281b" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/79136f02-3b04-4f10-b830-7df31f06281b/gallery/2027-sirena-118-for-sale-san-diego-california-uncategorized-001-tlgtm5.png"
+                alt="2027 Sirena 118"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&loop=1&playlist=&modestbranding=1&showinfo=0&rel=0"
+                            title="2027 Sirena 118"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/SirenaYachts_logo_white.webp"
+                    alt="Sirena logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">San Diego, California</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Sirena 118</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/0c6d6e04-c2d5-4d9c-a823-444313246a3a" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/0c6d6e04-c2d5-4d9c-a823-444313246a3a/gallery/2026-wally-wallypower50-for-sale-san-diego-california-uncategorized-001-tld6em.jpg"
+                alt="2026 Wally Wallypower50"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Wally_logo_white.webp"
+                    alt="Wally logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">San Diego, California</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2026 Wally Wallypower50</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/8148c8cd-50a9-4117-aa11-c0e54d18b3d2" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/8148c8cd-50a9-4117-aa11-c0e54d18b3d2/gallery/2027-axopar-38-cross-top-for-sale-san-diego-california-uncategorized-001-tl7ueu.jpg"
+                alt="2027 Axopar 38 Cross Top"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <video muted loop playsinline preload="none">
+                            <source src="https://files.yachtway.com/listings/8148c8cd-50a9-4117-aa11-c0e54d18b3d2/videos/14c2d5ca-44da-462b-a264-d73cb6b8a222_listingCard.mp4" type="video/mp4">
+                        </video>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Axopar_logo_white.webp"
+                    alt="Axopar logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">San Diego, California</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Axopar 38 Cross Top</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/12200ba6-d499-44a9-8f77-d959be86ff01" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/12200ba6-d499-44a9-8f77-d959be86ff01/gallery/2027-brabus-marine-shadow-1000-xc-cross-cabin-signature-edition-for-sale-san-diego-california-uncategorized-001-tl61gg.jpg"
+                alt="2027 Brabus Marine Shadow 1000 XC Cross Cabin Signature Edition"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/uKBv_6jwfQo?autoplay=1&mute=1&controls=0&loop=1&playlist=uKBv_6jwfQo&modestbranding=1&showinfo=0&rel=0"
+                            title="2027 Brabus Marine Shadow 1000 XC Cross Cabin Signature Edition"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/BrabusMarine_logo_white.webp"
+                    alt="Brabus Marine logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">San Diego, California</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Brabus Marine Shadow 1000 XC Cross Cabin Signature Edition</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    Contact for Price
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/9ccf1ba7-e6c8-44da-a3f0-6efcfb4d9802" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/9ccf1ba7-e6c8-44da-a3f0-6efcfb4d9802/gallery/2027-axopar-29-xc-cross-cabin-for-sale-seattle-washington-uncategorized-001-tkncjk.jpg"
+                alt="2027 Axopar 29 XC Cross Cabin"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/vb7v7_R4nHA?autoplay=1&mute=1&controls=0&loop=1&playlist=vb7v7_R4nHA&modestbranding=1&showinfo=0&rel=0"
+                            title="2027 Axopar 29 XC Cross Cabin"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Axopar_logo_white.webp"
+                    alt="Axopar logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Seattle, Washington</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Axopar 29 XC Cross Cabin</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    $335,830
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                            <a href="/yachts/cf060417-877f-4173-8c33-169137ada788" class="home-vessels-v2-card yacht-card">
+    <div class="home-vessels-v2-card__media">
+                    <img
+                src="https://files.yachtway.com/listings/cf060417-877f-4173-8c33-169137ada788/gallery/2027-axopar-29-sun-top-for-sale-kailua-kona-hawaii-uncategorized-001-tknbmj.jpg"
+                alt="2027 Axopar 29 Sun Top"
+                class="home-vessels-v2-card__image yacht-static-image"
+                loading="lazy"
+            >
+
+                            <div class="home-vessels-v2-card__video yacht-video-overlay">
+                                            <iframe
+                            src="https://www.youtube.com/embed/MoHdKCtFFz8?autoplay=1&mute=1&controls=0&loop=1&playlist=MoHdKCtFFz8&modestbranding=1&showinfo=0&rel=0"
+                            title="2027 Axopar 29 Sun Top"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                                    </div>
+                    
+                    <div class="home-vessels-v2-card__brand">
+                <img
+                    src="https://jb.apdstack.com/assets/img/brands/Axopar_logo_white.webp"
+                    alt="Axopar logo"
+                    class="home-vessels-v2-card__logo"
+                    loading="lazy"
+                >
+            </div>
+        
+        <div class="home-vessels-v2-card__logo-wrap">
+            
+                            <p class="home-vessels-v2-card__location">Kailua-Kona, Hawaii</p>
+            
+                            <h3 class="home-vessels-v2-card__name">2027 Axopar 29 Sun Top</h3>
+            
+            <p class="home-vessels-v2-card__price">
+                                    $348,480
+                            </p>
+        </div>
+
+        <span class="home-vessels-v2-card__cta" aria-hidden="true">
+            <span class="home-vessels-v2-card__cta-text">View</span>
+            <span class="home-vessels-v2-card__cta-icon">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </span>
+    </div>
+</a>
+                                    </div>
+
+                <nav class="catalog-pagination" aria-label="Pagination">
+        <div class="catalog-pagination-back">
+                            <span class="catalog-pagination-nav is-disabled" aria-disabled="true">
+                    <span class="catalog-pagination-chevron" aria-hidden="true">&lt;</span>
+                    BACK
+                </span>
+                    </div>
+
+        <div class="catalog-pagination-pages">
+                                                <span class="catalog-pagination-page is-active" aria-current="page">1</span>
+                                                                <a href="https://jb.apdstack.com/yachts?page=2"
+                       class="catalog-pagination-page">2</a>
+                                                                <a href="https://jb.apdstack.com/yachts?page=3"
+                       class="catalog-pagination-page">3</a>
+                                                                <a href="https://jb.apdstack.com/yachts?page=4"
+                       class="catalog-pagination-page">4</a>
+                                                                <a href="https://jb.apdstack.com/yachts?page=5"
+                       class="catalog-pagination-page">5</a>
+                                    </div>
+
+        <div class="catalog-pagination-next">
+                            <a href="https://jb.apdstack.com/yachts?page=2"
+                   class="catalog-pagination-nav is-next">
+                    NEXT
+                    <span class="catalog-pagination-chevron" aria-hidden="true">&gt;</span>
+                </a>
+                    </div>
+    </nav>
+                    </div>
+    </main>
+
+    <footer class="site-foot">
+
+        <section class="expert site-foot__expert" id="contact">
+        <h2>Get Expert Guidance</h2>
+        <p>Tell us what the water means to you. We&#039;ll take it from there.</p>
+        <a class="btn" href="/contact">Book a Consultation</a>
+    </section>
+    
+    <div class="site-foot__main">
+        <div class="foot-grid">
+            <div>
+                <a href="https://jb.apdstack.com" class="foot-logo" aria-label="Jeff Brown Yachts">
+                    <img src="/assets/img/jby-home-v2/jby_logo.svg" alt="Jeff Brown Yachts">
+                </a>
+                <nav class="foot-nav" aria-label="Footer">
+                                                                    <a href="/">Home</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/yachts">Portfolio</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/brands">Brands</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/services">Services</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/experiences">Experiences</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/about">About JBY</a>
+                                                                        <span class="sep">/</span>
+                                                <a href="/contact">Contact</a>
+                                    </nav>
+            </div>
+
+            <div class="foot-col">
+                                    <h6>Contact Us</h6>
+                                            <p><a href="tel:+16192229899">+1 619-222-9899</a></p>
+                                    
+                                    <h6>Email</h6>
+                                            <p><a href="mailto:jeff@jeffbrownyachts.com">jeff@jeffbrownyachts.com</a></p>
+                                    
+                                    <h6>Social Media</h6>
+                    <div class="foot-social">
+                                                    <a
+                                href="#"
+                                aria-label="Instagram"
+                                                            >
+                                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.63985 3.13281H16.3198C18.9708 3.13281 21.1198 5.33895 21.1198 8.06035V15.9444C21.1198 18.6658 18.9708 20.8719 16.3198 20.8719H8.63985C5.98888 20.8719 3.83984 18.6658 3.83984 15.9444V8.06035C3.83984 5.33895 5.98888 3.13281 8.63985 3.13281ZM17.0442 8.30519C17.5743 8.30519 18.0041 7.86396 18.0041 7.31967C18.0041 6.7754 17.5743 6.33417 17.0442 6.33417C16.5139 6.33417 16.0841 6.7754 16.0841 7.31967C16.0841 7.86396 16.5139 8.30519 17.0442 8.30519ZM12.4809 7.56761C10.095 7.56761 8.16083 9.55312 8.16083 12.0024C8.16083 14.4517 10.095 16.4372 12.4809 16.4372C14.8667 16.4372 16.8009 14.4517 16.8009 12.0024C16.8034 10.8254 16.3491 9.69588 15.5384 8.86363C14.7276 8.03138 13.6274 7.56498 12.4809 7.56761ZM9.84073 12.0008C9.84073 13.4977 11.0227 14.711 12.4808 14.711C13.9387 14.711 15.1207 13.4977 15.1207 12.0008C15.1207 10.5041 13.9387 9.29069 12.4808 9.29069C11.0227 9.29069 9.84073 10.5041 9.84073 12.0008Z"/></svg>
+                                    </a>
+                                                    <a
+                                href="#"
+                                aria-label="Facebook"
+                                                            >
+                                <svg viewBox="0 0 24 23" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M21 4.88889V18.1111C21 19.1543 20.1543 20 19.1111 20H15.5694C15.3086 20 15.0973 19.7886 15.0973 19.5277V13.8611H17.3073C17.5317 13.8612 17.7251 13.7032 17.77 13.4833L18.11 11.7833C18.1241 11.7147 18.1068 11.6433 18.0631 11.5885C18.0192 11.5339 17.9534 11.5014 17.8833 11.5H15.0973V8.43056C15.0973 8.30016 15.203 8.19444 15.3333 8.19444H17.6944C17.9553 8.19444 18.1667 7.98303 18.1667 7.72223V6.30556C18.1667 6.04476 17.9553 5.83333 17.6944 5.83333H15.3333C13.7685 5.83333 12.5 7.10186 12.5 8.66667V11.5H11.3383C11.0775 11.5 10.8661 11.7114 10.8661 11.9723V13.3889C10.8661 13.6497 11.0775 13.8611 11.3383 13.8611H12.5V19.5277C12.5 19.7886 12.2886 20 12.0277 20H5.88889C4.84568 20 4 19.1543 4 18.1111V4.88889C4 3.84568 4.84568 3 5.88889 3H19.1111C20.1543 3 21 3.84568 21 4.88889Z"/></svg>
+                                    </a>
+                                                    <a
+                                href="#"
+                                aria-label="Youtube"
+                                                            >
+                                <svg viewBox="0 0 24 23" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.7425 4.31649L19.1361 4.45716C20.7859 4.64038 22.0248 6.02396 21.9996 7.65505V15.345C22.0248 16.9761 20.7859 18.3596 19.1361 18.5429L17.7997 18.6836C13.6301 19.1055 9.42722 19.1055 5.25749 18.6836L3.86391 18.5429C2.21405 18.3596 0.975134 16.9761 1.00038 15.345V7.65505C0.975134 6.02396 2.21405 4.64038 3.86391 4.45716L5.20022 4.31649C9.36995 3.8945 13.5728 3.8945 17.7425 4.31649ZM10.6505 14.5197L14.3635 12.0815H14.4208C14.6209 11.9534 14.7416 11.7346 14.7416 11.5C14.7416 11.2654 14.6209 11.0466 14.4208 10.9186L10.7078 8.48029C10.4885 8.3347 10.2055 8.31979 9.97165 8.44152C9.73785 8.56325 9.59145 8.80175 9.59097 9.06172V13.9383C9.60329 14.1802 9.74154 14.399 9.95686 14.5172C10.1722 14.6353 10.4343 14.6364 10.6505 14.5197Z"/></svg>
+                                    </a>
+                                                    <a
+                                href="#"
+                                aria-label="Linkedin"
+                                                            >
+                                <i class="fas fa-link" aria-hidden="true"></i>
+                            </a>
+                                            </div>
+                            </div>
+
+            <div class="foot-col">
+                <h6>Locations</h6>
+                <nav class="foot-locs" aria-label="Locations">
+                                            <a href="/locations/san-diego">San Diego</a>
+                                            <a href="/locations/newport-harbor">Newport Harbor</a>
+                                            <a href="/locations/marina-del-rey">Marina del Rey</a>
+                                            <a href="/locations/sausalito">Sausalito</a>
+                                            <a href="/locations/seattle">Seattle</a>
+                                            <a href="/locations/kona">Kona</a>
+                                            <a href="/locations/wrightsville-beach">Wrightsville Beach</a>
+                                            <a href="/locations/charleston">Charleston</a>
+                                    </nav>
+            </div>
+        </div>
+
+        <div class="foot-legal">
+            <p class="copy">&copy; Jeff Brown Yachts, Inc. All Rights Reserved</p>
+            <nav aria-label="Legal">
+                                    <a href="https://jb.apdstack.com/privacy-policy">Privacy Policy</a>
+                                <span class="sep">|</span>
+                                    <a href="https://jb.apdstack.com/terms-and-conditions">Terms and Conditions</a>
+                                <span class="sep">|</span>
+                                    <a href="https://jb.apdstack.com/statement-of-information">Statement of Information</a>
+                            </nav>
+        </div>
+
+        <button
+            type="button"
+            class="back-top"
+            id="scrollTopBtn"
+            aria-label="Back to top"
+        >
+            <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M13.9842 10.6509L7.7342 16.9009C7.67613 16.9589 7.60719 17.005 7.53132 17.0364C7.45545 17.0679 7.37414 17.084 7.29201 17.084C7.20989 17.084 7.12857 17.0679 7.0527 17.0364C6.97683 17.005 6.9079 16.9589 6.84983 16.9009C6.79176 16.8428 6.74569 16.7739 6.71427 16.698C6.68284 16.6221 6.66667 16.5408 6.66667 16.4587C6.66667 16.3766 6.68284 16.2952 6.71427 16.2194C6.74569 16.1435 6.79176 16.0746 6.84983 16.0165L12.6584 10.2087L6.84983 4.40087C6.73255 4.28359 6.66667 4.12453 6.66667 3.95868C6.66667 3.79283 6.73255 3.63377 6.84983 3.51649C6.9671 3.39922 7.12616 3.33333 7.29201 3.33333C7.45787 3.33333 7.61693 3.39922 7.7342 3.51649L13.9842 9.76649C14.0423 9.82454 14.0884 9.89347 14.1199 9.96934C14.1513 10.0452 14.1675 10.1265 14.1675 10.2087C14.1675 10.2908 14.1513 10.3721 14.1199 10.448C14.0884 10.5239 14.0423 10.5928 13.9842 10.6509Z"/>
+            </svg>
+        </button>
+    </div>
+
+</footer>
+
+<div class="jby-st ce" id="jby-ce" role="dialog" aria-modal="true" aria-labelledby="jby-ce-title">
+    <div class="jby-st-veil" data-ce-close></div>
+    <div class="jby-st-panel">
+        <button class="jby-st-close" type="button" data-ce-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="jby-st-body">
+            <h3 id="jby-ce-title">Get expert guidance</h3>
+            <form id="jby-ce-form" novalidate>
+                <div class="jby-ce-topics" id="jby-ce-topics">
+                    <span class="jby-st-lbl">Interested in</span>
+                    <div class="jby-rs-picker" id="jby-ce-picker" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false"></div>
+                    <div class="jby-rs-menu" id="jby-ce-menu" role="listbox" aria-multiselectable="true"></div>
+                </div>
+                <div class="jby-f-grid">
+                    <div class="jby-field"><input type="text" id="jby-ce-name" placeholder="Full name*" autocomplete="name"></div>
+                    <div class="jby-field"><input type="email" id="jby-ce-email" placeholder="Email*" autocomplete="email"></div>
+                    <div class="jby-field"><input type="tel" id="jby-ce-phone" placeholder="Phone (optional)" autocomplete="tel"></div>
+                    <div class="jby-field"><input type="text" id="jby-ce-zip" placeholder="Zip code (optional)" autocomplete="postal-code"></div>
+                </div>
+                <div class="jby-field full"><textarea id="jby-ce-message" placeholder="Message (optional)"></textarea></div>
+                <p class="jby-st-err" id="jby-ce-err"></p>
+            </form>
+        </div>
+        <div class="jby-st-done">
+            <div class="jby-st-done-ic"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 23.5l8.5 8.5L35 13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Request sent</h3>
+            <p id="jby-ce-done-msg"></p>
+            <button class="jby-btn-ghost jby-st-done-btn" type="button" data-ce-close>Close</button>
+        </div>
+        <div class="jby-st-foot">
+            <button class="jby-btn-out" type="button" data-ce-close>Cancel</button>
+            <button class="jby-btn-navy" type="button" id="jby-ce-submit">Request information</button>
+        </div>
+    </div>
+</div>
+<div
+    class="jbs"
+    id="jbs"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Search Jeff Brown Yachts"
+    hidden
+    data-autocomplete="https://jb.apdstack.com/search/autocomplete"
+    data-results="https://jb.apdstack.com/search"
+>
+    <div class="jbs-scrim" data-jbs-close></div>
+    <div class="jbs-shell">
+        <div class="jbs-bar">
+            <span class="jbs-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            </span>
+            <label class="jbs-visually-hidden" for="jbs-input">Search the site</label>
+            <input
+                id="jbs-input"
+                type="search"
+                autocomplete="off"
+                autocorrect="off"
+                spellcheck="false"
+                placeholder="Search yachts for sale, brands, locations and team&hellip;"
+            >
+            <button class="jbs-x" id="jbs-close" type="button" aria-label="Close search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="jbs-drop" id="jbs-drop"></div>
+        <p class="jbs-visually-hidden" id="jbs-count" role="status" aria-live="polite"></p>
+    </div>
+</div>
+
+<link rel="stylesheet" href="/assets/css/site-shell-approved.css">
+<link rel="stylesheet" href="/assets/css/jby-leaflet-map.css">
+<link rel="stylesheet" href="/assets/css/jby-search.css">
+<link rel="stylesheet" href="/assets/css/jby-search-mobile.css">
+
+<link rel="stylesheet" href="/assets/css/header-v2-mega-menu.css">
+<script src="/assets/js/header-v2-drilldown.js"></script>
+<script src="/assets/js/contact-expert-modal.js"></script>
+<script src="/assets/js/jby-search.js"></script>
+<script src="/assets/js/jby-intro.js"></script>
+
+<script>
+
+    // Mobile Menu
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuToggle && mobileMenu) {
+
+        mobileMenuToggle.addEventListener('click', () => {
+
+            mobileMenu.classList.toggle('hidden');
+
+        });
+
+    }
+
+    // Scroll To Top
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    if (scrollTopBtn) {
+
+        scrollTopBtn.addEventListener('click', () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        });
+
+    }
+
+</script>
+
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="ca8f81b4-9498-472f-a57f-d785a5267d2b";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+    
+    <script>
+        window.yachtConfig = {
+            priceMin: 1000,
+            priceMax: 18273775,
+            yearMin: 1984,
+            yearMax: 2027,
+            speedMin: 15,
+            speedMax: 62
+        };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="/assets/js/yacht-card-hover.js"></script>
+    <script src="/assets/js/yacht_catalog.js"></script>
+    <script src="/assets/js/yacht_script.js"></script>
+</body>
+</html>

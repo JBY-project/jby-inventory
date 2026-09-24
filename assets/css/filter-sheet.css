@@ -1,0 +1,239 @@
+/* ==========================================================================
+   The six filter panels become bottom sheets on a phone.
+
+   On the desktop each panel is a 440px card hung under its trigger. At 375px
+   that card is wider than the screen, it is anchored to a button that may sit
+   on the third row of the wrapping filter bar, and its content — a slider, a
+   list of forty locations, a two-column make/model browser — runs off the
+   bottom with nowhere to scroll. Below 760px the same markup is re-laid as a
+   sheet that rises from the bottom edge: full width, at most 86% of the
+   screen's height, the title bar and the Clear/Apply bar pinned at either end
+   and everything between them scrolling.
+
+   Nothing here needs new behaviour. The panels already open and close by
+   .hidden, and the catalogue already closes them on any click outside
+   .filter-group — which is what the veil behind the sheet is, so tapping it
+   dismisses the sheet without a line of script.
+   ========================================================================== */
+
+@media (max-width:760px){
+
+  /* ---- the veil ----
+     Hung off .filter-bar rather than the panel, so that a tap on it counts as
+     a tap outside .filter-group and the catalogue's own handler closes the
+     sheet. :has watches all six panels at once. */
+  /* Light. The sheet over it is the desktop panel's 0.68 navy, which is a
+     glass you are meant to see the page through — and at 0.55 the only thing
+     left to see was the dark the veil had made, so the glass read as a flat
+     navy slab. This is enough to sit the sheet forward and no more. */
+  #jb_body .filter-bar:has(.filter-dropdown:not(.hidden))::after{
+    content:"";position:fixed;inset:0;z-index:190;
+    background:rgba(10,22,32,0.22);
+    animation:jby-sheet-veil .28s ease both}
+
+  /* the page holds still underneath */
+  html:has(.filter-dropdown:not(.hidden)){overflow:hidden}
+
+  /* ---- the sheet ---- */
+  #jb_body .filter-dropdown,
+  #jb_body .make-model-filter-panel,
+  #jb_body .condition-filter-panel,
+  #jb_body .length-filter-panel,
+  #jb_body .price-filter-panel,
+  #jb_body .location-filter-panel{
+    position:fixed;top:auto;right:0;bottom:0;left:0;z-index:200;
+    width:auto;min-width:0;max-width:none;
+    max-height:86vh;max-height:86dvh;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    padding:0;
+    border:0;border-top:0.5px solid rgba(255,255,255,0.18);
+    border-radius:14px 14px 0 0;
+    /* The desktop panel's own veil, unchanged: rgba(65,100,123,0.68) over a
+       26px blur. The two bars that stick are the only things that need more
+       than that, and they carry it themselves, below. */
+    box-shadow:0 -18px 50px rgba(15,32,45,0.38);
+    animation:jby-sheet-up .32s cubic-bezier(0.22,1,0.36,1) both}
+
+  /* Make or Model is the one panel the catalogue lays out as a flex column
+     (#jb_body .make-model-filter-panel:not(.hidden), in custom_yacht_style.css).
+     Inside a sheet that scrolls, that column shrinks the two-row browse grid to
+     whatever height is left over and the rows spill out of the box, which drops
+     the Clear/Apply bar into the middle of the makes. Normal flow instead, like
+     the other five, and the sheet's own scroll carries the overflow. */
+  #jb_body .filter-dropdown.make-model-filter-panel{display:block}
+
+  /* The rule above sets position and overflow on .filter-dropdown, which is an
+     id and a class and so outranks Tailwind's .hidden. This puts it back. */
+  #jb_body .filter-dropdown.hidden{display:none}
+
+  /* ---- the title bar ----
+     No grab handle: nothing here is dragged. This is the page's modal, which
+     happens to arrive from the bottom edge, and it is closed by its own ✕, by
+     Apply, or by the veil. */
+  #jb_body .filter-dropdown .condition-filter-header{
+    position:sticky;top:0;z-index:2;
+    margin:0;padding:16px 20px 12px;
+    /* A shade denser than the sheet, over a blur of its own, so the list
+       passing underneath goes soft instead of reading through the title. */
+    background:rgba(65,100,123,0.90);
+    -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+    border-bottom:1px solid rgba(255,255,255,0.18)}
+  /* 24px is a small thing to hit with a thumb. */
+  #jb_body .filter-dropdown .condition-filter-close{
+    width:40px;height:40px;margin:-8px -8px -8px 0}
+
+  /* ---- what sits between the bars ---- */
+  #jb_body .filter-dropdown > .condition-filter-options,
+  #jb_body .filter-dropdown > .location-filter-options,
+  #jb_body .filter-dropdown > .price-filter-slider-wrap,
+  #jb_body .filter-dropdown > .price-filter-inputs,
+  #jb_body .filter-dropdown > .length-filter-slider-wrap,
+  #jb_body .filter-dropdown > .length-filter-inputs{
+    padding-left:20px;padding-right:20px}
+  #jb_body .filter-dropdown > .condition-filter-options{
+    padding-top:20px;margin-bottom:20px}
+  #jb_body .filter-dropdown > .price-filter-slider-wrap,
+  #jb_body .filter-dropdown > .length-filter-slider-wrap{padding-top:16px}
+  #jb_body .filter-dropdown > .price-filter-inputs,
+  #jb_body .filter-dropdown > .length-filter-inputs{margin:24px 0 36px}
+  /* The sheet is the one thing that scrolls: the lists inside it give up
+     their own boxes so a finger never lands on a scroller within a scroller. */
+  #jb_body .filter-dropdown > .location-filter-options{
+    max-height:none;overflow:visible;padding-top:20px;margin-bottom:20px}
+  #jb_body .filter-dropdown .mm-makes,
+  #jb_body .filter-dropdown .mm-models{max-height:none;overflow:visible}
+  #jb_body .filter-dropdown .mm-browse{min-height:0}
+
+  /* ---- the Clear / Apply bar ---- */
+  #jb_body .filter-dropdown .condition-filter-footer{
+    position:sticky;bottom:0;z-index:2;
+    margin:0;padding:14px 20px;
+    padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));
+    background:rgba(65,100,123,0.90);
+    -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+    border-top:1px solid rgba(255,255,255,0.18)}
+  /* Two buttons, half the width each, rather than two 120px ones adrift at
+     the ends of a 375px bar. */
+  #jb_body .filter-dropdown .condition-filter-btn-clear,
+  #jb_body .filter-dropdown .condition-filter-btn-apply{
+    flex:1 1 0;min-width:0;padding:12px 16px}
+
+  /* ---- Make or Model ----
+     Its header exists for the sheet alone; on the desktop the panel is a
+     two-column menu under its button and carries no title of its own. */
+  #jb_body .make-model-filter-panel .condition-filter-header{display:flex}
+  #jb_body .make-model-filter-panel .mm-browse{grid-template-columns:1fr}
+  #jb_body .make-model-filter-panel .mm-makes{
+    border-right:0;border-bottom:1px solid rgba(255,255,255,0.18)}
+  #jb_body .make-model-filter-footer{padding:14px 20px;
+    padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  /* one level in: the ranges take the sheet, the makes step aside */
+  #jb_body .make-model-filter-panel.mm-drilled .mm-makes{display:none}
+  /* The way back sits in the title bar, to the left of the make's name, and
+     is only there on the second level — on the first there is nothing behind
+     it. The title bar is a two-item row, so it takes the title's place at the
+     start of it and the title is pushed along. */
+  #jb_body .make-model-filter-panel .condition-filter-header{gap:14px}
+  #jb_body .make-model-filter-panel .condition-filter-title{margin-right:auto}
+  #jb_body .filter-dropdown .mm-back{display:none}
+  #jb_body .make-model-filter-panel.mm-drilled .mm-back{
+    display:flex;align-items:center;justify-content:center;
+    width:40px;height:40px;margin:-8px 0 -8px -10px;flex:0 0 40px;
+    padding:0;background:transparent;border:0;color:#fff;cursor:pointer}
+  /* The make's name is in the title bar now, so the heading over the list
+     would say it a second time. */
+  #jb_body .make-model-filter-panel .mm-models-head{display:none}
+  #jb_body .filter-dropdown .mm-back-chev{
+    width:9px;height:9px;margin-left:3px;
+    border-left:1px solid currentColor;border-bottom:1px solid currentColor;
+    transform:rotate(45deg)}
+
+  @keyframes jby-sheet-up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  @keyframes jby-sheet-veil{from{opacity:0}to{opacity:1}}
+}
+
+/* Above the phone the Make or Model panel is what it was: no title bar.
+   A min-width query rather than a plain rule, so that it cannot reach past
+   the sheet's own display:flex further up this file. */
+@media (min-width:761px){
+  /* Both columns are on screen up here: no title bar, and nothing to go back
+     from — the back control lives inside that bar and goes with it. */
+  #jb_body .make-model-filter-panel .condition-filter-header{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #jb_body .filter-dropdown,
+  #jb_body .filter-bar::after{animation:none !important}
+}
+
+/* ==========================================================================
+   Sort, as the same sheet
+
+   It is the seventh panel on that row in everything but name — a list of
+   choices hung under a trigger — so on a phone it arrives the same way the six
+   filters do, and closes the same three ways: its ✕, a choice, the veil.
+   ========================================================================== */
+
+/* The tick, drawn rather than written. The markup carries a <i class="fa-check">
+   on whichever option was active when the page was built, and syncSort moves
+   the .is-active class without moving that icon — sort by price and the tick
+   stayed behind on Date added. A pseudo-element cannot be left behind. Both
+   widths; the stale tick was never a phone problem either. */
+#jb_body .catalog-sort-option i{display:none}
+#jb_body .catalog-sort-option.is-active::after{
+  content:"";flex:0 0 auto;align-self:center;
+  /* the navy the icon it replaces was drawn in */
+  color:#41647B;
+  width:5px;height:9px;margin:0 3px 3px 0;
+  border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+
+/* The ✕ belongs to the sheet. Above it the panel is a dropdown under its own
+   button, dismissed by clicking off it, and has never carried one. */
+@media (min-width:761px){
+  #jb_body .catalog-sort-close{display:none}
+}
+
+@media (max-width:760px){
+  #jb_body .catalog-results-bar:has(.catalog-sort-dropdown.show)::after{
+    content:"";position:fixed;inset:0;z-index:190;
+    background:rgba(10,22,32,0.22);
+    animation:jby-sheet-veil .28s ease both}
+  html:has(.catalog-sort-dropdown.show){overflow:hidden}
+
+  #jb_body .catalog-sort-dropdown{
+    position:fixed;top:auto;right:0;bottom:0;left:0;z-index:200;
+    width:auto;max-width:none;
+    max-height:86vh;max-height:86dvh;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    padding:0;
+    border:0;border-top:0.5px solid rgba(255,255,255,0.18);
+    border-radius:14px 14px 0 0;
+    background:rgba(65,100,123,0.68);
+    -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+    box-shadow:0 -18px 50px rgba(15,32,45,0.38);
+    animation:jby-sheet-up .32s cubic-bezier(0.22, 1, 0.36, 1) both}
+
+  #jb_body .catalog-sort-dropdown-header{
+    position:sticky;top:0;z-index:2;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px 12px;color:#fff;
+    background:rgba(65,100,123,0.90);
+    -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+    border-bottom:1px solid rgba(255,255,255,0.18)}
+  #jb_body .catalog-sort-close{
+    display:flex;align-items:center;justify-content:center;
+    width:40px;height:40px;margin:-8px -8px -8px 0;
+    padding:0;background:transparent;border:0;color:#fff;
+    font-size:16px;line-height:1;cursor:pointer}
+
+  #jb_body .catalog-sort-group{border-top-color:rgba(255,255,255,0.18)}
+  #jb_body .catalog-sort-group:first-of-type{border-top:0}
+  #jb_body .catalog-sort-option{padding:14px 20px;color:#fff}
+  #jb_body .catalog-sort-option:last-child{
+    padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  #jb_body .catalog-sort-option:hover,
+  #jb_body .catalog-sort-option.is-active,
+  #jb_body .catalog-sort-option.is-active:hover{background:rgba(255,255,255,0.14)}
+  #jb_body .catalog-sort-option.is-active span{color:#fff}
+  #jb_body .catalog-sort-option.is-active::after{color:#fff}
+}

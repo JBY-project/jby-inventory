@@ -1,0 +1,586 @@
+/* ==========================================================================
+   The prototype's chrome on the inventory page: the blue header, the closing
+   band and the blue footer.
+
+   The header rules are the locations page's own, and the block under them is
+   the site-wide blue header exactly as tools/blue-headings-and-header.py lays
+   it down elsewhere. The band and footer are tools/site-blocks/band-footer.css,
+   unchanged, so the applier's copy and this one cannot drift.
+
+   Loaded after the deployed catalogue's stylesheets, which carry no .nav rules
+   of their own — their header was .header-v2, and that markup is gone.
+   ========================================================================== */
+
+/* ---- the page's tokens, which these rules expect ---- */
+:root{
+  --ink:#2f2f39; --paper:#fcfcfd; --section:#f4f6f9; --navy:#41647b; --navy-d:#365466;
+  --sand:#bdb19d; --mute:#575760; --line:rgba(0,0,0,0.08); --white:#fff; --page-pad:40px;
+}
+
+/* ---- header ---- */
+/* The deployed header sat in the flow; this one is fixed, as it is on every
+   prototype page, so the page starts below it. Same values as the locations page. */
+main{padding-top:128px}
+@media (max-width:980px){main{padding-top:104px}}
+
+.nav{position:fixed;top:0;left:0;right:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:24px 40px;z-index:100;gap:16px;
+  background:linear-gradient(180deg, rgba(65,100,123,0.82) 0%, rgba(65,100,123,0.92) 100%);
+  backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);
+  border-bottom:0.5px solid rgba(255,255,255,0.15);color:#fff;
+  transition:padding .35s ease}
+.nav.scrolled{padding:16px 40px}
+.nav .left{display:flex;align-items:center;justify-self:start}
+.nav .burger{width:24px;height:24px;display:flex;flex-direction:column;justify-content:space-between;background:transparent;border:0;padding:0;cursor:pointer}
+.nav .burger span{display:block;height:1px;width:100%;background:#fff}
+.nav .logo{width:72px;height:72px;justify-self:center;display:flex;align-items:center;justify-content:center;transition:width .35s,height .35s}
+.nav .logo img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1)}
+.nav.scrolled .logo{width:60px;height:60px}
+.nav .right{display:flex;gap:12px;align-items:center;justify-self:end}
+.nav .icon{width:40px;height:40px;border:0.5px solid rgba(255,255,255,0.7);color:#fff;display:flex;align-items:center;justify-content:center;transition:.25s;background:transparent}
+.nav .icon svg{width:20px;height:20px}
+.nav .icon:hover{background:rgba(255,255,255,0.14)}
+.nav .cta{padding:0 24px;height:40px;font-family:'Mesmerize',sans-serif;font-weight:300;font-size:16px;line-height:20px;
+  letter-spacing:0;text-transform:uppercase;color:#fff;border:0.5px solid rgba(255,255,255,0.75);transition:.25s;
+  display:inline-flex;align-items:center;background:transparent;white-space:nowrap}
+.nav .cta:hover{background:rgba(255,255,255,0.14)}
+/* === JBY: the header is blue from the first frame === ===
+   The hero on this page is light and carries no photograph and no video, so a
+   transparent header would be dark type on paper and would then flip to white
+   on blue the moment the page moved. It is the blue from the start instead,
+   the way the locations page has been since it was built.
+
+   Appended after the page's own styles rather than written into its .nav
+   rules, which differ page by page.
+
+   The class is doubled on every selector, and that is not decoration. Every
+   one of these pages carries a `.nav:not(.scrolled){...}` rule — the office
+   page carries eight of them — and :not() counts its argument, so those are
+   (0,2,0) against a plain .nav's (0,1,0). Being later in the file does not
+   help against higher specificity. `.nav.nav` is (0,2,0) and later, which
+   does. Written the way this codebase already writes it, as in
+   `footer .back-top.back-top:hover`.
+
+   .scrolled is left holding the one thing that should still answer the scroll,
+   the padding tightening, which each page already defines. */
+.nav.nav{
+  background:linear-gradient(180deg, rgba(65,100,123,0.82) 0%, rgba(65,100,123,0.92) 100%);
+  backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);
+  border-bottom:0.5px solid rgba(255,255,255,0.15);
+  color:#fff;
+}
+/* The burger is the one part of the header the pages never agreed on: the
+   home page draws it 24 square with three 1px bars, the locations page 40 wide
+   and 13 tall, the listing page 34 by 11, the contact page 40 by 12 with 1.5px
+   bars, and the menu pages 26 by 12. Six burgers for one site. The home page's
+   is the one, here, so every header opens with the same mark. */
+.nav.nav .burger{width:24px;height:24px;display:flex;flex-direction:column;
+  justify-content:space-between;align-items:stretch;cursor:pointer;
+  background:transparent;border:0;padding:0}
+.nav.nav .burger span{display:block;height:1px;width:100%;background:#fff;border-radius:0}
+.nav.nav .logo img{filter:brightness(0) invert(1)}
+.nav.nav .icon{border-color:rgba(255,255,255,0.7);color:#fff;background:transparent}
+.nav.nav .icon:hover{background:rgba(255,255,255,0.14)}
+.nav.nav .cta{color:#fff;border-color:rgba(255,255,255,0.75);background:transparent}
+.nav.nav .cta:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.75)}
+
+/* ---- the header on a phone ----
+   The locations page drops Contact an expert at this width and tightens the
+   padding: three items do not fit beside the mark, and the button ran off the
+   right edge. The burger carries the same ground. */
+@media (max-width:960px){
+  .nav{padding:16px 24px}
+  .nav.scrolled{padding:12px 24px}
+  .nav .cta{display:none}
+}
+@media (max-width:980px){html,body{overflow-x:hidden}}
+
+/* ---- pagination on a phone ----
+   Six page numbers with BACK and NEXT either side and 48px of gap is wider than
+   375px: both ends were cut off. The numbers take a row of their own, the two
+   controls sit under them. */
+@media (max-width:600px){
+  #jb_body .catalog-pagination{flex-wrap:wrap;gap:14px 24px;margin-top:32px}
+  #jb_body .catalog-pagination-pages{order:-1;width:100%;justify-content:center;flex-wrap:wrap}
+  #jb_body .catalog-pagination-back,#jb_body .catalog-pagination-next{flex:0 0 auto}
+}
+
+/* The card is the home page's, so the rhythm around it is too: 20px between
+   cards, not the catalogue's 16. */
+#jb_body .yacht-catalog-v2__grid{gap:20px}
+
+/* ---- pagination ----
+   The current page was black; it is the brand navy here, like everything else
+   that is filled on these pages. The row also sat 48px clear of the band, which
+   left a white gap under it; 24 is enough. */
+#jb_body .catalog-pagination-page.is-active{background:var(--navy);border-color:var(--navy);color:#fff}
+#jb_body .catalog-pagination-page:hover{color:var(--navy);border-color:var(--navy)}
+#jb_body .catalog-pagination{margin-bottom:0}
+/* The gap under the pagination was the catalogue's 48px of container padding,
+   the row's own 48 and the band's 88 on top of each other — a white band of its
+   own. One 56px step from the numbers to the photograph instead. */
+#jb_body .yacht-catalog-v2__main > .container{padding-bottom:0}
+/* matched selector for selector: theirs is #jb_body.yacht-catalog-v2 .yacht-catalog-v2__main,
+   which is an id and two classes — anything shorter loses to it */
+#jb_body.yacht-catalog-v2 .yacht-catalog-v2__main{padding-bottom:0}
+#jb_body section.jby-band{margin-top:56px}
+
+/* ---- band + footer ---- */
+/* ==========================================================================
+   The How can we help? band and the footer, as the home page carries them.
+
+   Every class here is prefixed — .jby-band / .jb-* for the band, .jby-footer /
+   .jf-* for the footer — because this block is dropped into thirty-odd pages
+   that each grew their own .help, .expert, .foot-grid and .foot-col. A prefix
+   is the one way to be sure none of that reaches in. The two element
+   selectors that could still reach in, `footer{...}` and `section{...}`, are
+   outranked by naming the element and the class together.
+
+   The tokens are the page's own, with the home page's values as fallbacks, so
+   this works on a page that carries jby-system.css and on one that does not.
+   ========================================================================== */
+
+/* ---- the band ------------------------------------------------------------
+   The shape is the plain band's: 315 tall, centred, 40 of side padding. The
+   photograph and the flat black over it are what the home page added.
+
+   The drift: the image layer is taller than the band and is moved against it
+   on scroll, so the photograph is centred exactly when the band is centred in
+   the window and pans either side of that. The layer is inset -55% top and
+   bottom, more than the furthest extreme reaches, so no edge comes into view.
+   The handler is in the script beside this. */
+section.jby-band{position:relative;overflow:hidden;margin-top:88px;
+  background:var(--navy,#41647b);color:#fff;padding:0 40px;text-align:center;min-height:315px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jby-band .jb-bg{position:absolute;inset:-55% 0;z-index:0;will-change:transform}
+.jby-band .jb-bg-inner{position:absolute;inset:0;background-size:cover;background-position:center}
+/* One flat black over the whole band, the same weight top to bottom. */
+.jby-band .jb-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(0,0,0,0.55)}
+.jby-band .jb-body{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;
+  max-width:820px}
+.jby-band h2{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:20px;line-height:30px;
+  letter-spacing:0;text-transform:uppercase;color:#fff;margin:0 0 12px}
+.jby-band p{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:16px;line-height:24px;
+  color:rgba(255,255,255,0.95);margin:0 0 28px;max-width:640px;font-style:normal}
+/* Rule 4 of jby-system.css: a button standing on a photograph is a veil the
+   image shows through with white type, not a slab. */
+.jby-band .jb-btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:10px;
+  height:48px;padding:0 32px;background:var(--jby-veil,rgba(255,255,255,0.28));color:#fff;
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:16px;line-height:20px;letter-spacing:0;
+  text-transform:uppercase;border:0;cursor:pointer;transition:background .25s;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.jby-band .jb-btn:hover{background:var(--jby-blue-d,var(--navy-d,#365466))}
+
+/* The rise. Nothing is hidden until the script has said it is running, so a
+   page whose JS never gets there still shows the band rather than three
+   invisible lines. */
+html.jb-rise-ready .jby-band [data-rise]{opacity:0;transform:translate3d(0,24px,0);
+  transition:opacity .7s cubic-bezier(0.22,1,0.36,1),transform .7s cubic-bezier(0.22,1,0.36,1)}
+html.jb-rise-ready .jby-band [data-rise].jb-in{opacity:1;transform:none}
+html.jb-rise-ready .jby-band [data-rise="1"]{transition-delay:.08s}
+html.jb-rise-ready .jby-band [data-rise="2"]{transition-delay:.16s}
+
+@media (max-width:680px){
+  section.jby-band{padding:64px 24px;min-height:0}
+  /* One line, the way the rest of the site sets this title on a phone. */
+  .jby-band h2{white-space:nowrap;font-size:clamp(16px,5.8vw,28px);line-height:1.25}
+  .jby-band .jb-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html.jb-rise-ready .jby-band [data-rise]{opacity:1;transform:none;transition:none}
+}
+
+/* ---- the footer ----------------------------------------------------------
+   On the brand blue: the roundel, two columns of links with Locations and
+   Pages down the left and contact flush right, the legal line, and the white
+   back-to-top. */
+footer.jby-footer{background:var(--navy,#41647b);padding:36px 40px 32px;
+  color:rgba(255,255,255,0.85);font-size:16px;position:relative;border-top:0}
+.jby-footer .jf-inner{max-width:1440px;margin:0 auto}
+.jby-footer .jf-logo{width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0;
+  background:transparent;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.jby-footer .jf-logo img{width:100%;height:100%;display:block;object-fit:contain;filter:none}
+/* Locations and Contact are the same heading, so the two columns start on one
+   line. */
+.jby-footer .jf-cols{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-top:38px}
+.jby-footer .jf-contact{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+/* Two faces, as the mockup draws them: the headings in the display face, the
+   rows of links under them in the body one. It is the body face that lets the
+   eight cities sit on a single line — the same string set in Mesmerize is
+   half as wide again, and wraps. */
+.jby-footer .jf-h{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:17px;line-height:26px;
+  letter-spacing:0;text-transform:uppercase;color:#fff;margin:0 0 8px}
+.jby-footer .jf-lists .jf-row{margin-bottom:28px}
+.jby-footer .jf-lists .jf-row:last-child{margin-bottom:0}
+/* One line of links with slashes between them, wrapping as a line of text
+   would. The gap does the spacing on both sides of each slash, so the row
+   stays even however it breaks. */
+.jby-footer .jf-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 9px;
+  font-family:'Myriad Pro',sans-serif;font-weight:400;font-size:15px;line-height:22px;letter-spacing:0.01em;
+  text-transform:uppercase}
+.jby-footer .jf-row a{color:rgba(255,255,255,0.85);text-decoration:none;transition:color .2s}
+.jby-footer .jf-row a:hover{color:#fff}
+.jby-footer .jf-sep{color:rgba(255,255,255,0.4)}
+/* The address and the number are the display face again, a step under the
+   heading. 12px is the floor this site keeps for something meant to be read
+   and tapped. */
+.jby-footer .jf-contact a{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:12px;line-height:24px;
+  letter-spacing:0.02em;text-transform:uppercase;color:#fff;text-decoration:none;transition:color .2s}
+.jby-footer .jf-contact a:hover{color:rgba(255,255,255,0.7)}
+.jby-footer .jf-social{display:flex;gap:12px;margin-top:20px;align-items:center}
+.jby-footer .jf-social a{width:24px;height:24px;color:#fff;display:flex;align-items:center;justify-content:center;
+  transition:opacity .2s}
+.jby-footer .jf-social a svg{width:24px;height:24px;display:block}
+.jby-footer .jf-social a:hover{opacity:0.6}
+/* The legal line, in the body face and dimmer than everything above it — the
+   one row in the footer that is read only when it is looked for. */
+.jby-footer .jf-legal{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-top:32px;
+  font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:14px;line-height:22px;
+  color:rgba(255,255,255,0.65)}
+.jby-footer .jf-legal p{margin:0}
+.jby-footer .jf-legal-links{display:flex;flex-wrap:wrap;gap:6px 12px}
+.jby-footer .jf-legal-links a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s}
+.jby-footer .jf-legal-links a:hover{color:#fff}
+.jby-footer .jf-legal-links .jf-sep{color:rgba(255,255,255,0.35)}
+/* A white tile with a dark chevron, not the veil the rest of the blue carries:
+   it is the one control in the footer and the mockup gives it the contrast.
+   The class is named twice to get above the :is() icon rule in
+   jby-system.css, which would otherwise hover this to the footer's own blue
+   and dissolve it into the background. */
+.jby-footer .jf-top{position:absolute;right:40px;top:48px;width:46px;height:46px;border:0;
+  background:var(--paper,#fcfcfd);border-radius:2px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:var(--ink,#2f2f39);
+  transition:background .2s,color .2s}
+.jby-footer .jf-top.jf-top:hover{background:var(--navy-d,#365466);color:#fff}
+.jby-footer .jf-top svg{width:20px;height:20px;display:block;transform:rotate(-90deg)}
+
+/* On a phone the two rows become columns: four items down each, flowing into
+   a second column beside them. The slashes go with the change — they are a
+   device for a line of text, not for a list. */
+@media (max-width:640px){
+  footer.jby-footer{padding:32px 24px 28px}
+  .jby-footer .jf-cols{flex-direction:column;gap:32px}
+  .jby-footer .jf-contact{align-items:flex-start;text-align:left}
+  .jby-footer .jf-row{display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,auto);
+    grid-auto-columns:max-content;gap:10px 28px}
+  .jby-footer .jf-row .jf-sep{display:none}
+  /* 8px between the address and the number. The direct child, so the social
+     marks below are left alone. */
+  .jby-footer .jf-contact > a + a{margin-top:8px}
+  .jby-footer .jf-legal{flex-direction:column;gap:10px}
+  .jby-footer .jf-top{right:24px;top:28px;width:40px;height:40px}
+}
+
+/* ==========================================================================
+   Black -> the brand navy.
+
+   The deployed catalogue draws its whole control layer in #000: the filter
+   buttons and their chevrons, the panels inside them, the two sliders, the
+   results count, the sort menu and the pagination. Every selector below is the
+   deployed one, repeated at the same weight — #jb_body and one class — so this
+   file, which loads last, carries it.
+   ========================================================================== */
+
+/* filter bar */
+#jb_body .filter-group .filter-button{color:var(--navy)}
+#jb_body .filter-group .filter-button:hover{border-color:var(--navy)}
+#jb_body .filter-group .filter-button.is-open{border:1px solid var(--navy)}
+#jb_body .filter-group .filter-chevron{color:var(--navy)}
+
+/* make or model */
+#jb_body .make-model-filter-input{border-bottom:1px solid var(--navy);color:var(--navy)}
+#jb_body .make-model-filter-input:focus{border-bottom-color:var(--navy)}
+#jb_body .make-model-filter-label{color:var(--navy)}
+
+/* condition */
+#jb_body .condition-filter-close{color:var(--navy)}
+#jb_body .condition-filter-radio{border:1px solid var(--navy)}
+#jb_body .condition-filter-option input[type="radio"]:checked + .condition-filter-radio::after{background:var(--navy)}
+#jb_body .condition-filter-label{color:var(--navy)}
+#jb_body .condition-filter-btn-clear{color:var(--navy);border:1px solid var(--navy)}
+
+/* the two sliders */
+#jb_body .length-filter-panel .noUi-connect,
+#jb_body .price-filter-panel .noUi-connect{background:var(--navy)}
+#jb_body .length-filter-panel .noUi-handle,
+#jb_body .price-filter-panel .noUi-handle{border:1px solid var(--navy)}
+#jb_body .length-filter-field input,
+#jb_body .price-filter-field input{color:var(--navy)}
+#jb_body .length-filter-field input:focus,
+#jb_body .price-filter-field input:focus{border-bottom-color:var(--navy)}
+
+/* location */
+#jb_body .location-filter-option input[type="checkbox"]:checked + .location-filter-checkbox{border-color:var(--navy);background:var(--navy)}
+#jb_body .location-filter-label,
+#jb_body .brand-filter-label{color:var(--navy)}
+
+/* the count, the sort menu */
+#jb_body .catalog-results-count{color:var(--navy)}
+#jb_body .catalog-sort-button{color:var(--navy)}
+#jb_body .catalog-sort-option{color:var(--navy)}
+
+/* pagination — the numbers beside the current one */
+#jb_body .catalog-pagination-page{color:var(--navy)}
+
+/* the contact modal's ink, which is its own token */
+#jb_body #jby-ce{--lm-text:#41647b;--lm-ink:#41647b}
+
+/* ==========================================================================
+   The filter panels, in the burger menu's blue
+
+   Same veil as the mega menu: the navy at 0.82 easing to 0.92, blurred and
+   saturated, with a hairline of white around it. Everything inside goes white,
+   which is why the black-to-navy block above stops at the trigger buttons.
+   ========================================================================== */
+#jb_body .filter-dropdown{
+  /* The burger menu's own values, not the header's: the menu panel is a flat
+     rgba(65,100,123,0.68) over a 26px blur, with no gradient and no saturate.
+     Copied as they are written in JBY-Menu-V3-Dark-NoPhoto.html. */
+  background:rgba(65,100,123,0.68);
+  -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+  border:0.5px solid rgba(255,255,255,0.18);
+  box-shadow:0 18px 50px rgba(15,32,45,0.22);
+  color:#fff}
+/* The menu's own rule for the line between its two columns, same weight. */
+#jb_body .mm-makes{border-right-color:rgba(255,255,255,0.18)}
+#jb_body .filter-dropdown .condition-filter-title,
+#jb_body .filter-dropdown .condition-filter-label,
+#jb_body .filter-dropdown .location-filter-label,
+#jb_body .filter-dropdown .brand-filter-label,
+#jb_body .filter-dropdown .make-model-filter-label,
+#jb_body .filter-dropdown .length-filter-scale span,
+#jb_body .filter-dropdown .price-filter-scale span,
+#jb_body .filter-dropdown .make-model-filter-status,
+#jb_body .filter-dropdown .location-filter-status{color:#fff}
+#jb_body .filter-dropdown .condition-filter-close{color:#fff}
+#jb_body .filter-dropdown .condition-filter-close:hover{color:#fff;opacity:.7}
+#jb_body .filter-dropdown .condition-filter-header{border-bottom-color:rgba(255,255,255,0.18)}
+#jb_body .filter-dropdown .condition-filter-footer{border-top:1px solid rgba(255,255,255,0.18)}
+
+/* the tick boxes and the radio */
+#jb_body .filter-dropdown .condition-filter-radio,
+#jb_body .filter-dropdown .location-filter-checkbox,
+#jb_body .filter-dropdown .mm-box{border:1px solid rgba(255,255,255,0.7);background:transparent}
+#jb_body .filter-dropdown .condition-filter-option input[type="radio"]:checked + .condition-filter-radio::after{background:#fff}
+#jb_body .filter-dropdown .location-filter-option input[type="checkbox"]:checked + .location-filter-checkbox{
+  background:#fff;border-color:#fff}
+#jb_body .filter-dropdown .location-filter-option input[type="checkbox"]:checked + .location-filter-checkbox::after{border-color:var(--navy)}
+
+/* the fields */
+#jb_body .filter-dropdown input[type="text"],
+#jb_body .filter-dropdown input[type="search"],
+#jb_body .filter-dropdown .make-model-filter-input,
+#jb_body .filter-dropdown .length-filter-field input,
+#jb_body .filter-dropdown .price-filter-field input{
+  color:#fff;background:transparent;border-bottom:1px solid rgba(255,255,255,0.5)}
+#jb_body .filter-dropdown input::placeholder{color:rgba(255,255,255,0.65)}
+#jb_body .filter-dropdown .length-filter-field input:focus,
+#jb_body .filter-dropdown .price-filter-field input:focus,
+#jb_body .filter-dropdown .make-model-filter-input:focus{border-bottom-color:#fff}
+
+/* the two sliders */
+#jb_body .filter-dropdown .noUi-target{background:rgba(255,255,255,0.28);border:0;box-shadow:none}
+#jb_body .length-filter-panel .noUi-connect,
+#jb_body .price-filter-panel .noUi-connect{background:#fff}
+/* The handles were white on the white bar they ride — invisible. Deep navy,
+   with a hairline of white so they keep an edge against the panel as well. */
+#jb_body .length-filter-panel .noUi-handle,
+#jb_body .price-filter-panel .noUi-handle{background:var(--navy-d,#365466);
+  border:1px solid rgba(255,255,255,0.9);box-shadow:0 1px 4px rgba(15,32,45,0.35)}
+#jb_body .length-filter-panel .noUi-handle:hover,
+#jb_body .price-filter-panel .noUi-handle:hover,
+#jb_body .length-filter-panel .noUi-handle.noUi-active,
+#jb_body .price-filter-panel .noUi-handle.noUi-active{background:#22333f}
+
+/* Clear, and the Apply that now carries the count */
+#jb_body .filter-dropdown .condition-filter-btn-clear{
+  color:#fff;border:1px solid rgba(255,255,255,0.7);background:transparent}
+#jb_body .filter-dropdown .condition-filter-btn-clear:hover{background:rgba(255,255,255,0.14)}
+#jb_body .filter-dropdown .condition-filter-btn-apply{
+  background:#fff;color:var(--navy);border:1px solid #fff}
+#jb_body .filter-dropdown .condition-filter-btn-apply:hover{background:rgba(255,255,255,0.86)}
+
+/* ---- Make or Model: makes on the left, that make's ranges on the right ---- */
+#jb_body .make-model-filter-panel{min-width:560px;padding:0}
+#jb_body .mm-browse{display:grid;grid-template-columns:232px 1fr;min-height:260px}
+#jb_body .mm-makes{border-right:1px solid rgba(255,255,255,0.18);padding:10px 0;max-height:320px;overflow:auto}
+#jb_body .mm-models{padding:14px 20px 10px;max-height:320px;overflow:auto}
+/* The box sits on the first line, not in the middle of the row: a name that
+   wraps to two lines — XC Cross Cabin Signature Edition, Brabus Marine — used to
+   push the tick half a line down. The margin is half the difference between the
+   line and the box, so a one-line row still reads as centred. */
+#jb_body .mm-make,
+#jb_body .mm-model{display:flex;align-items:flex-start;gap:10px;padding:9px 20px;cursor:pointer;
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:14px;line-height:20px;
+  letter-spacing:0.06em;text-transform:uppercase;color:#fff;transition:background .2s}
+#jb_body .mm-make{width:100%;text-align:left;background:transparent;border:0;position:relative}
+/* a make with something chosen inside it, seen while another make is on screen */
+#jb_body .mm-make.is-chosen .mm-label::before{content:"";display:inline-block;width:5px;height:5px;
+  border-radius:50%;background:#fff;margin-right:8px;vertical-align:middle}
+#jb_body .mm-make .mm-chev{width:6px;height:6px;flex:0 0 6px;margin-top:6px;
+  border-right:1px solid rgba(255,255,255,0.65);border-bottom:1px solid rgba(255,255,255,0.65);
+  transform:rotate(-45deg)}
+#jb_body .mm-model{padding:8px 0;text-transform:none;letter-spacing:0;
+  font-family:'Myriad Pro',sans-serif;font-size:15px}
+#jb_body .mm-make:hover,
+#jb_body .mm-make.is-active{background:rgba(255,255,255,0.14)}
+#jb_body .mm-make input,
+#jb_body .mm-model input{position:absolute;opacity:0;width:0;height:0}
+#jb_body .mm-box{width:15px;height:15px;border-radius:2px;flex:0 0 15px;position:relative;margin-top:3px}
+#jb_body .mm-make input:checked + .mm-box,
+#jb_body .mm-model input:checked + .mm-box{background:#fff;border-color:#fff}
+#jb_body .mm-make input:checked + .mm-box::after,
+#jb_body .mm-model input:checked + .mm-box::after{content:"";position:absolute;left:4px;top:1px;
+  width:5px;height:9px;border:solid var(--navy);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+#jb_body .mm-label{flex:1 1 auto;min-width:0}
+#jb_body .mm-n{opacity:.7;font-size:13px;flex:0 0 auto}
+#jb_body .mm-model.mm-all{padding-bottom:12px;margin-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,0.22)}
+/* a range that the whole make already covers: ticked, but not a choice of its own */
+#jb_body .mm-model.is-implied{opacity:.55;cursor:default}
+#jb_body .mm-models-head{margin:0 0 10px;font-family:'Mesmerize',sans-serif;font-weight:300;
+  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7)}
+#jb_body .mm-hint{margin:0;color:rgba(255,255,255,0.7);font-family:'Myriad Pro',sans-serif;font-size:15px}
+#jb_body .make-model-filter-footer{padding:16px 20px;margin:0}
+
+/* ---- the search field ----
+   The FAQ page's field, rule for rule, so the two pages carry one search box:
+   48 tall, hairline border that goes navy on focus, the magnifier inset on the
+   left, and the native clear button dressed grey rather than browser blue. Only
+   the placing is this page's — it stands at the right end of the filter row. */
+#jb_body .faq-search{margin-top:24px;position:relative;max-width:520px}
+#jb_body .faq-search input{width:100%;height:48px;border:0.5px solid rgba(0,0,0,0.28);background:#fff;border-radius:2px;
+  padding:0 16px 0 46px;font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s}
+#jb_body .faq-search input:focus{border-color:var(--navy)}
+#jb_body .faq-search input::placeholder{color:#71717a}
+#jb_body .faq-search svg{position:absolute;left:16px;top:14px;width:20px;height:20px;color:#71717a;pointer-events:none}
+#jb_body .faq-search input[type="search"]::-webkit-search-cancel-button{
+  -webkit-appearance:none;appearance:none;height:15px;width:15px;margin:0 2px;cursor:pointer;
+  background-color:#71717a;transition:background-color .2s;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6l12 12M18 6 6 18' stroke='black' stroke-width='2.2' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6l12 12M18 6 6 18' stroke='black' stroke-width='2.2' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
+#jb_body .faq-search input[type="search"]::-webkit-search-cancel-button:hover{background-color:var(--ink)}
+#jb_body .catalog-search{margin:0 0 0 auto;width:min(360px,100%);max-width:360px}
+
+@media (max-width:760px){
+  #jb_body .make-model-filter-panel{min-width:0;width:calc(100vw - 48px)}
+  #jb_body .mm-browse{grid-template-columns:1fr;min-height:0}
+  #jb_body .mm-makes{border-right:0;border-bottom:1px solid rgba(255,255,255,0.18);max-height:200px}
+  /* No hover on a phone, so the hint says what to do there instead. */
+  #jb_body .mm-hint{font-size:14px}
+  #jb_body .mm-hint::after{content:" Tap one."}
+  #jb_body .catalog-search{margin:0;width:100%;max-width:none}
+}
+
+/* ---- what the search field drops while you type ---- */
+#jb_body .catalog-search{position:relative}
+#jb_body .catalog-suggest{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:60;
+  background:#fff;border:0.5px solid rgba(0,0,0,0.18);border-radius:2px;
+  box-shadow:0 18px 40px rgba(15,32,45,0.16);overflow:hidden}
+#jb_body .catalog-suggest[hidden]{display:none}
+#jb_body .cs-row{display:flex;flex-direction:column;gap:2px;padding:10px 16px;
+  font-family:'Myriad Pro',sans-serif;font-weight:300;color:var(--ink);text-decoration:none;
+  border-bottom:0.5px solid rgba(0,0,0,0.08)}
+#jb_body .cs-row:hover{background:var(--section)}
+#jb_body .cs-name{font-size:15px;line-height:20px}
+#jb_body .cs-meta{font-size:13px;line-height:18px;color:var(--mute)}
+#jb_body .cs-all{display:block;width:100%;padding:11px 16px;border:0;background:transparent;cursor:pointer;
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:13px;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--navy);text-align:left}
+#jb_body .cs-all:hover{background:var(--section)}
+#jb_body .cs-empty{margin:0;padding:12px 16px;font-family:'Myriad Pro',sans-serif;font-weight:300;
+  font-size:15px;color:var(--mute)}
+
+/* ---- the filter row holds its line ----
+   A pill inside a trigger made that button 40px against its neighbours' 38, so
+   the label lifted as soon as a filter was set. The button keeps one height in
+   both states and centres what is in it; the pill is sized to sit inside that. */
+#jb_body .filter-group .filter-button{height:38px;min-height:38px;padding:0 12px;
+  display:inline-flex;align-items:center}
+#jb_body .filter-button-label{line-height:20px}
+#jb_body .filter-value-pill{height:24px;display:inline-flex;align-items:center;line-height:1}
+
+/* The search shares the line with Clear all filters rather than pushing it onto
+   a second one. */
+#jb_body .catalog-search{flex:0 1 240px;max-width:240px;min-width:160px}
+#jb_body .catalog-search input{height:38px;font-size:15px;padding:0 14px 0 42px}
+#jb_body .catalog-search svg{top:9px;left:14px;width:18px;height:18px}
+
+/* The page title at the size the rest of the site sets its section titles:
+   20/30, as on the home page and the journal. The catalogue drew it at 28/40.
+   Matched selector for selector — theirs is an id and two classes. */
+#jb_body.yacht-catalog-v2 .yacht-catalog-v2__title{font-size:20px;line-height:30px}
+
+/* ---- the phone gives the search the whole line ----
+   The rule above hands the field 240px so that on the desktop filter row it
+   sits beside "Clear all filters" instead of pushing it down. It sits after
+   the 760px block, so it was winning there too and the field stopped a third
+   of the way across the phone. Here it takes the full row of the wrapping
+   flex container, under the filter buttons. */
+@media (max-width:760px){
+  #jb_body .catalog-search{flex:1 1 100%;width:100%;max-width:none;min-width:0;margin:0}
+}
+
+/* ---- the header on a phone ----
+   The mark is drawn at 72px at every width, and with 16px of padding either
+   side that is a 104px bar — a quarter of the screen's height before the page
+   begins, on the one screen that can least afford it. The mark comes down to
+   56 and the padding to 12: an 80px bar, and 68 once it shrinks on scroll.
+   Above 600px nothing changes; the tablet keeps the full-size mark. */
+@media (max-width:600px){
+  main{padding-top:80px}
+  .nav{padding:12px 20px}
+  .nav.scrolled{padding:10px 20px}
+  .nav .logo{width:56px;height:56px}
+  .nav.scrolled .logo{width:48px;height:48px}
+}
+
+/* ---- nothing matched ----
+   The grid is three columns and the message is one child of it, so it is told
+   to span the whole row; without that it sat in the first cell, left of two
+   empty ones, and read as a listing that had failed to load. */
+#jb_body .catalog-empty{
+  grid-column:1 / -1;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:0;padding:72px 24px 80px}
+#jb_body .catalog-empty-mark{width:64px;height:64px;color:var(--navy);opacity:.55}
+#jb_body .catalog-empty-title{
+  margin:20px 0 0;color:var(--navy);
+  font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:22px;line-height:32px}
+#jb_body .catalog-empty-note{
+  margin:8px 0 0;max-width:38ch;color:var(--mute);
+  font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:15px;line-height:24px}
+#jb_body .catalog-empty-btn{
+  margin-top:24px;padding:11px 26px;cursor:pointer;
+  background:var(--navy);color:#fff;border:1px solid var(--navy);border-radius:2px;
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:13px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  transition:background .2s,border-color .2s}
+#jb_body .catalog-empty-btn:hover{background:#355366;border-color:#355366}
+
+@media (max-width:600px){
+  #jb_body .catalog-empty{padding:48px 20px 56px}
+  #jb_body .catalog-empty-mark{width:56px;height:56px}
+  #jb_body .catalog-empty-title{font-size:20px;line-height:30px}
+}
+
+/* ---- All locations stands apart ----
+   It is not one of the places; it is the absence of them, and the only tick in
+   the list that cannot be held alongside another. A rule under it says so. */
+#jb_body .location-filter-option--all{
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.18)}
+
+/* ---- the range sliders keep inside their field ----
+   noUiSlider hangs each handle half its own width past the point it marks, so
+   at the ends of the range the two 32px grips stood 16px outside the panel's
+   text column and the bar looked crooked against everything above it. The
+   track gives up that 16px at either side instead: the handle's outer edge now
+   lands exactly where the field begins and ends, and the bar runs between
+   them. Both panels, both widths — the overhang was never a phone problem. */
+#jb_body .length-filter-panel .noUi-target,
+#jb_body .price-filter-panel .noUi-target{margin:0 16px}
+/* and the wrap's own 4px, which held the pair 4px short of the two fields
+   under them — the slider is meant to measure the same column they do */
+#jb_body .length-filter-slider-wrap,
+#jb_body .price-filter-slider-wrap{padding-left:0;padding-right:0}
