@@ -38,8 +38,13 @@
 #jb_body .vessel-card .name{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:#fff;
   margin:0;text-transform:none;max-width:82%;min-height:56px;text-wrap:balance;
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+/* The panel's flex gap is 12px between every pair; -12 here closes the space
+   under the name entirely, leaving the chip where it is. The price then falls
+   on the name's own 28px line rhythm — the next line of that block rather
+   than a separate thing floating under it. Same value as the rest of the
+   site, which carries it in tools/site-blocks/cards.css. */
 #jb_body .vessel-card .price{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:#fff;
-  margin:-8px 0 0}
+  margin:-12px 0 0}
 /* CTA — the "View" plate, at rest. It used to be a 36px chevron that widened
    into the word on hover, which is a state a finger never reaches: on a phone
    the card offered a bare arrow and nothing that said what it did.
@@ -106,13 +111,17 @@
 
 }
 
-@media (hover:none),(pointer:coarse){
-  /* The name reserved two lines (min-height:56px) so every card in a desktop
-     row put its price on the same line. On the phone the cards are one per
-     row and nothing needs to line up across them, so a one-line name was
-     leaving a whole empty line — 12px of flex gap plus 28px of unused box —
-     between it and the price. The box drops to its natural height and the
-     price takes 8px of its own on top of the 12px gap: 20px, flat. */
+/* 639px is where custom_yacht_style.css takes the catalogue grid to a single
+   column. The name reserves two lines (min-height:56px) so that every card in
+   a row puts its price on the same line; with one card per row there is no
+   row to line up with, and a one-line name was leaving a whole empty line
+   between itself and the price. The box drops to its natural height and the
+   price keeps the -12px it has everywhere else, so it reads as the name's
+   next line here too.
+
+   This was gated on (hover:none),(pointer:coarse) before, which is not the
+   same question: a desktop window dragged narrow is one column with a mouse
+   in it, and that is where the empty line was still showing. */
+@media (max-width:639px){
   #jb_body .vessel-card .name{min-height:0}
-  #jb_body .vessel-card .price{margin:8px 0 0}
 }
