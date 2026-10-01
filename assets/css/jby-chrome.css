@@ -584,3 +584,21 @@ footer.jby-footer{background:var(--navy,#41647b);padding:36px 40px 32px;
    under them — the slider is meant to measure the same column they do */
 #jb_body .length-filter-slider-wrap,
 #jb_body .price-filter-slider-wrap{padding-left:0;padding-right:0}
+
+/* ---- the scrollbars inside the navy panels ----
+   Every scrolling box in a filter panel sits on rgba(65,100,123,·): the makes
+   column, the ranges beside it, the list of locations. Left to the browser
+   they are drawn in the system's own colours, which on the dark panel is a
+   white rail down the side of the list — the one bright thing in it.
+
+   scrollbar-color rather than ::-webkit-scrollbar: the pseudo-element replaces
+   the scrollbar wholesale, and on macOS that means an always-visible bar where
+   the overlay one only appears while you scroll. This recolours what is there
+   and leaves that behaviour alone. */
+#jb_body .filter-dropdown,
+#jb_body .filter-dropdown .mm-makes,
+#jb_body .filter-dropdown .mm-models,
+#jb_body .filter-dropdown .location-filter-options,
+#jb_body .filter-dropdown .brand-filter-options{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,0.32) transparent}

@@ -1189,7 +1189,7 @@
   line-height: 24px;
   color: #000;
   background: #fff;
-  border: 1px solid #C1C1C4;
+  border: 1px solid #DCDCDE;
   border-radius: 2px;
   cursor: pointer;
   transition: border-color 0.15s ease;
@@ -6432,6 +6432,7 @@ a.in-person-event-btn {
   font-weight: normal;
   letter-spacing: 0;
   text-transform: uppercase;
+  text-align: center;
   color: #41647B;
 }
 

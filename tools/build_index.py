@@ -38,7 +38,7 @@ if i >= 0:
 t = t.replace(SITE + "/assets/", "assets/")
 t = t.replace('href="/assets/', 'href="assets/').replace('src="/assets/', 'src="assets/')
 for sheet in ("fonts.css", "yacht_catalog.css", "custom_yacht_style.css"):
-    t = t.replace('href="assets/css/%s"' % sheet, 'href="assets/css/%s?v=45"' % sheet)
+    t = t.replace('href="assets/css/%s"' % sheet, 'href="assets/css/%s?v=46"' % sheet)
 
 # 4. the page's own links still point at the deployed site, which is where they go
 t = re.sub(r'href="/(?!/)(?!assets)', 'href="%s/' % SITE, t)
@@ -197,14 +197,14 @@ t = re.sub(r'(<p class="catalog-results-count">\s*All vessels:\s*)<strong>\d+</s
 CAT = '<script src="assets/js/yacht_catalog.js"></script>'
 assert t.count(CAT) == 1
 t = t.replace(CAT,
-              '<link rel="stylesheet" href="./jby-system.css?v=45">\n'
-              '<link rel="stylesheet" href="assets/css/jby-chrome.css?v=45">\n'
-              '<link rel="stylesheet" href="assets/css/vessel-card.css?v=45">\n'
-              '<link rel="stylesheet" href="assets/css/filter-sheet.css?v=45">\n'
+              '<link rel="stylesheet" href="./jby-system.css?v=46">\n'
+              '<link rel="stylesheet" href="assets/css/jby-chrome.css?v=46">\n'
+              '<link rel="stylesheet" href="assets/css/vessel-card.css?v=46">\n'
+              '<link rel="stylesheet" href="assets/css/filter-sheet.css?v=46">\n'
               '<script src="assets/js/band.js"></script>\n'
-              '<script src="assets/js/listings.js?v=45"></script>\n'
-              '<script src="assets/js/inventory.js?v=45"></script>\n'
-              + CAT.replace('.js"', '.js?v=45"'))
+              '<script src="assets/js/listings.js?v=46"></script>\n'
+              '<script src="assets/js/inventory.js?v=46"></script>\n'
+              + CAT.replace('.js"', '.js?v=46"'))
 
 io.open(OUT, "w", encoding="utf-8").write(t)
 print("wrote", OUT, len(t), "bytes")

@@ -213,6 +213,12 @@
     box-shadow:0 -18px 50px rgba(15,32,45,0.38);
     animation:jby-sheet-up .32s cubic-bezier(0.22, 1, 0.36, 1) both}
 
+  /* The sort panel is white above this width and keeps the system's own
+     scrollbar there; as a sheet it is the same navy as the six filters. */
+  #jb_body .catalog-sort-dropdown{
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,0.32) transparent}
+
   #jb_body .catalog-sort-dropdown-header{
     position:sticky;top:0;z-index:2;
     display:flex;align-items:center;justify-content:space-between;

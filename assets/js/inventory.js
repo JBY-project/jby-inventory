@@ -84,8 +84,8 @@
          The deployed page could not be asked this — it sent one list or the
          other — so this is ours. */
       if (makeIds.length || modelIds.length) {
-        var byMake = makeIds.indexOf("make:" + v.make) >= 0;
-        var byModel = modelIds.indexOf("model:" + v.make + "|" + family(v)) >= 0;
+        var byMake = makeIds.indexOf("make:" + groupOf(v)) >= 0;
+        var byModel = modelIds.indexOf("model:" + groupOf(v) + "|" + range(v)) >= 0;
         if (!byMake && !byModel) return false;
       }
       if (search && (v.name + " " + v.location).toLowerCase().indexOf(search) < 0) return false;
@@ -336,18 +336,56 @@
     return words.join(" ") || m || v.model;
   }
 
+  /* The brands down the left of the menu are the client's list, not whatever the
+     stock happens to hold: these seven are the lines the yard represents, and the
+     brokerage boats — a Carver here, a Hatteras there — gather under one last row
+     rather than spreading eleven one-boat makes down the column.
+
+     `makes` is the spelling in the data, which is not always the spelling the
+     client uses: "Brabus Marine" is shown as BRABUS. A make that appears in the
+     listings and is not named here falls to `OTHER_GROUP`, so new brokerage stock
+     needs no change; a new franchise is one line added. */
+  var MAKE_GROUPS = [
+    { label: "Axopar", makes: ["Axopar"] },
+    { label: "BRABUS", makes: ["Brabus Marine"] },
+    { label: "Everglades", makes: ["Everglades"] },
+    { label: "Pershing", makes: ["Pershing"] },
+    { label: "Riva", makes: ["Riva"] },
+    { label: "Sirena", makes: ["Sirena"] },
+    { label: "Wally", makes: ["Wally"] }
+  ];
+
+  var OTHER_GROUP = "Pre-Owned";
+
+  function groupOf(v) {
+    for (var i = 0; i < MAKE_GROUPS.length; i++) {
+      if (MAKE_GROUPS[i].makes.indexOf(v.make) >= 0) return MAKE_GROUPS[i].label;
+    }
+    return OTHER_GROUP;
+  }
+
+  /* What the right column lists for a row. Under a brand it is that brand's
+     ranges; under Pre-Owned the ranges of eleven different makes would be a list
+     of strangers, so it is the makes themselves. */
+  function range(v) {
+    return groupOf(v) === OTHER_GROUP ? v.make : family(v);
+  }
+
   function makesIndex() {
-    var out = {}, order = [];
+    var out = {};
     listings.forEach(function (v) {
-      if (!out[v.make]) { out[v.make] = { name: v.make, count: 0, fams: {}, order: [] }; order.push(v.make); }
-      var e = out[v.make];
+      var g = groupOf(v);
+      if (!out[g]) { out[g] = { name: g, count: 0, fams: {}, order: [] }; }
+      var e = out[g];
       e.count++;
-      var f = family(v);
+      var f = range(v);
       if (!e.fams[f]) { e.fams[f] = 0; e.order.push(f); }
       e.fams[f]++;
     });
-    order.sort(function (a, b) { return out[b].count - out[a].count || a.localeCompare(b); });
-    return order.map(function (k) {
+    /* The client's order, not the stock's: the rows stay put as boats come and
+       go, and a row with nothing in it is left out rather than shown empty. */
+    var order = MAKE_GROUPS.map(function (g) { return g.label; }).concat(OTHER_GROUP);
+    return order.filter(function (k) { return out[k]; }).map(function (k) {
       out[k].order.sort(function (a, b) { return out[k].fams[b] - out[k].fams[a] || a.localeCompare(b); });
       return out[k];
     });
@@ -466,8 +504,8 @@
          The deployed page could not be asked this — it sent one list or the
          other — so this is ours. */
       if (makeIds.length || modelIds.length) {
-        var byMake = makeIds.indexOf("make:" + v.make) >= 0;
-        var byModel = modelIds.indexOf("model:" + v.make + "|" + family(v)) >= 0;
+        var byMake = makeIds.indexOf("make:" + groupOf(v)) >= 0;
+        var byModel = modelIds.indexOf("model:" + groupOf(v) + "|" + range(v)) >= 0;
         if (!byMake && !byModel) return false;
       }
       if (search && (v.name + " " + v.location).toLowerCase().indexOf(search) < 0) return false;
