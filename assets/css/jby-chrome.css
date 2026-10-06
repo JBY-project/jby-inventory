@@ -602,3 +602,20 @@ footer.jby-footer{background:var(--navy,#41647b);padding:36px 40px 32px;
 #jb_body .filter-dropdown .brand-filter-options{
   scrollbar-width:thin;
   scrollbar-color:rgba(255,255,255,0.32) transparent}
+
+/* === JBY: the header stands at its scrolled height === ===
+   The home page's geometry, given to this header at rest. This page never had
+   the pass the others got: it opened at .nav's full 24px padding around a 72px
+   mark, which is 120 against the home page's 92, and only tightened once the
+   page moved.
+
+   .nav.nav is (0,2,0) and the page's own rules are .nav and .nav.scrolled, so
+   this holds at every width and in both states, and the mark rule outranks
+   .nav .logo for the same reason. Only the vertical: the horizontal padding is
+   the page's own and differs by breakpoint. */
+.nav.nav{padding-top:16px;padding-bottom:16px}
+.nav.nav .logo{width:60px;height:60px}
+@media (max-width:980px){
+  .nav.nav{padding-top:12px;padding-bottom:12px}
+  .nav.nav .logo{width:50px;height:50px}
+}
