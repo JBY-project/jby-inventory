@@ -791,9 +791,13 @@
       setParams({ availability: r ? r.value : "" });
       if (typeof window.closeAllFilterDropdowns === "function") window.closeAllFilterDropdowns();
     };
+    /* There is no "All vessels" radio to fall back on any more — the panel
+       offers the three states it has and nothing else — so clearing is every
+       radio unticked, which is the same thing an empty parameter means. */
     window.clearAvailabilityFilter = function () {
-      var all = document.querySelector('input[name="availabilityRadio"][value=""]');
-      if (all) all.checked = true;
+      document.querySelectorAll('input[name="availabilityRadio"]').forEach(function (r) {
+        r.checked = false;
+      });
       setParams({ availability: "" });
     };
     window.closeAvailabilityFilter = function () {
