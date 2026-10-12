@@ -256,7 +256,7 @@
     /* Availability's own pill and radio, since yacht_catalog.js does not know it */
     (function () {
       var value = params().get("availability") || "";
-      var labels = { inStock: "In-Stock", comingSoon: "Coming Soon", toOrder: "To-Order" };
+      var labels = { inStock: "In Stock", onOrder: "On Order" };
       var holder = document.getElementById("availabilityActive");
       var divider = document.getElementById("availabilityDivider");
       var trigger = holder && holder.closest(".filter-button");
@@ -784,15 +784,17 @@
     }
 
     /* Availability is ours — the deployed page has no such filter, so nothing in
-       yacht_catalog.js knows these three names. */
-    var AVAIL_LABEL = { inStock: "In-Stock", comingSoon: "Coming Soon", toOrder: "To-Order" };
+       yacht_catalog.js knows these names. Two of them: the client settled the
+       taxonomy at In Stock and On Order, and what used to be Coming Soon is on
+       order like everything else that is not standing in a yard. */
+    var AVAIL_LABEL = { inStock: "In Stock", onOrder: "On Order" };
     window.applyAvailabilityFilter = function () {
       var r = document.querySelector('input[name="availabilityRadio"]:checked');
       setParams({ availability: r ? r.value : "" });
       if (typeof window.closeAllFilterDropdowns === "function") window.closeAllFilterDropdowns();
     };
     /* There is no "All vessels" radio to fall back on any more — the panel
-       offers the three states it has and nothing else — so clearing is every
+       offers the two states it has and nothing else — so clearing is every
        radio unticked, which is the same thing an empty parameter means. */
     window.clearAvailabilityFilter = function () {
       document.querySelectorAll('input[name="availabilityRadio"]').forEach(function (r) {

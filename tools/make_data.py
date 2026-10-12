@@ -6,6 +6,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "assets/js/listings.js")
 d = json.load(open("listings.json"))
 
+# Brands JBY no longer shows. The harvest keeps whatever the deployed catalogue
+# was listing on the day it ran — it is a record, and editing it would make it
+# a worse one — so the dropping happens here, where the page's data is made.
+DROPPED_MAKES = {"four winns"}
+d = [x for x in d if not any(m in (x.get("name", "") + " " + x.get("brandAlt", "")).lower()
+                             for m in DROPPED_MAKES)]
+
 STATE_OF = {}   # city -> state, from "City, State"
 rows = []
 for i, x in enumerate(d):
@@ -36,12 +43,14 @@ for i, x in enumerate(d):
         # AVAILABILITY IS A STAND-IN. The deployed catalogue does not publish it
         # anywhere this harvest can read, and the client's brief asks for the
         # filter, so a rule stands in until the real field arrives:
-        #   pre-owned, or a model year already here  -> In-Stock
-        #   next year's model with a price on it     -> Coming Soon
-        #   next year's model, price on application  -> To-Order
+        #   pre-owned, or a model year already here  -> In Stock
+        #   anything else                            -> On Order
+        # Two states and not three: the client settled the taxonomy there, and
+        # what used to be Coming Soon is on order like everything else that is
+        # not standing in a yard.
         # Replace this line with the real value and nothing else changes.
         "availability": ("inStock" if (x.get("condition") == "preOwned" or (year or 0) <= 2026)
-                         else ("comingSoon" if pm else "toOrder")),
+                         else "onOrder"),
     })
 
 # The location filter lists what the deployed catalogue lists, which is the
@@ -71,10 +80,11 @@ suggestions = [{"label": r["name"], "make": r["make"], "model": r["model"],
                 "modelId": "model:" + r["make"] + "|" + r["model"]} for r in rows]
 
 js = io.StringIO()
-js.write("/* The 65 listings the deployed catalogue had on 2026-09-24, harvested from\n"
-         "   jb.apdstack.com/yachts. Lengths come from each listing's own page; the\n"
-         "   condition from the catalogue's own vesselCondition filter. Static on purpose:\n"
-         "   this is the prototype, and it has no server to ask. */\n")
+js.write("/* The %d listings the deployed catalogue had on 2026-09-24, harvested from\n"
+         "   jb.apdstack.com/yachts, less the brands JBY no longer shows. Lengths come\n"
+         "   from each listing's own page; the condition from the catalogue's own\n"
+         "   vesselCondition filter. Static on purpose: this is the prototype, and it\n"
+         "   has no server to ask. */\n" % len(rows))
 js.write("window.JBY_LISTINGS = " + json.dumps(rows, indent=1) + ";\n")
 js.write("window.JBY_LOCATIONS = " + json.dumps(locations, indent=1) + ";\n")
 js.write("window.JBY_SUGGESTIONS = " + json.dumps(suggestions, indent=1) + ";\n")
