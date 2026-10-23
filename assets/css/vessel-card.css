@@ -50,7 +50,7 @@
 /* The price shares its line with the View plate: the line is the plate's
    36px, its foot on the plate's 24px, and it stops short of the plate. */
 #jb_body .vessel-card .price{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:12px;line-height:36px;
-  letter-spacing:0;text-transform:uppercase;color:#fff;margin:-10px 0 4px;
+  letter-spacing:0;text-transform:uppercase;color:#fff;margin:-6px 0 4px;
   max-width:calc(100% - 96px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* CTA — the "View" plate, at rest. It used to be a 36px chevron that widened
    into the word on hover, which is a state a finger never reaches: on a phone
